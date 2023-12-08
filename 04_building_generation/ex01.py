@@ -1,6 +1,3 @@
-inshala
-
-
 import bk7084 as bk
 import numpy as np
 from bk7084.math import *
