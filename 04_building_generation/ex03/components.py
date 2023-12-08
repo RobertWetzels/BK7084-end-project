@@ -32,6 +32,10 @@ material_basic_ground.textures = {
     "diffuse_texture": bk.res_path("../assets/grass.jpg"),
 }
 
+material_mosaic_tiles = bk.Material()
+material_mosaic_tiles.textures = {
+    "diffuse_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/03_textures/assets/mosaic_tiles_gloss.png"),
+}
 
 class BasicWall(bk.Mesh):
     """

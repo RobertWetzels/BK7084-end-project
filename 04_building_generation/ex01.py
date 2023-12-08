@@ -1,3 +1,6 @@
+inshala
+
+
 import bk7084 as bk
 import numpy as np
 from bk7084.math import *
@@ -118,7 +121,7 @@ mesh = bk.Mesh()
 
 # Next, we need to specify the positions of the vertices. We do this by setting the `positions`
 # attribute of the mesh. The positions are specified as a list of 3 floats for each vertex.
-mesh.positions = [[-3.0, -3.0, 0.0], [3.0, -3.0, 0.0], [3.0, 3.0, 0.0], [-3.0, 3.0, 0.0]]
+mesh.positions = [[-3.0, -3.0, 0.0], [3.0, -3.0, 0.0], [3.0, 3.0, 0.0], [-3.0, 3, 0.0]]
 
 # Next, we need to specify the texture coordinates of the vertices. We do this by setting the
 # `texcoords` attribute of the mesh. The texture coordinates are specified as a list of 2 floats
