@@ -137,14 +137,28 @@ Now that we have a wall, let's add some textures to it. We will use the same tex
 exercise. The textures are already provided in the `assets` folder of last exercise. You can use the 
 `bk.res_path` function to get the absolute path of the texture files.
 """
-mat = bk.Material()
-mat.textures = {
-     "diffuse_texture": None,    # TODO: Set the diffuse texture of the material.
-     "normal_texture": None,     # TODO: Set the normal texture of the material.
-     "specular_texture": None,   # TODO: Set the specular texture of the material.
-     "shininess_texture": None,  # TODO: Set the shininess texture of the material.
+material_mosaic_tiles = bk.Material()
+material_mosaic_tiles.textures = {
+    "diffuse_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/03_textures/assets/mosaic_tiles_col.png"),
+    "normal_texture": bk.res_path("C:/Users/rbjwe\BK7084-end-project/03_textures/assets/mosaic_tiles_nrm.png"),     # TODO: Set the normal texture of the material.
+    "specular_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/03_textures/assets/mosaic_tiles_refl.png"),   # TODO: Set the specular texture of the material.
+    "shininess_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/03_textures/assets/mosaic_tiles_gloss.png")
 }
-mesh.set_material(mat)
+
+material_basic_ground = bk.Material()
+material_basic_ground.textures = {
+    "diffuse_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/04_building_generation/assets/grass.jpg"),
+}
+
+material_stone_bricks = bk.Material()
+material_stone_bricks.textures = {
+     "diffuse_texture": bk.res_path("C:/Users/rbjwe\BK7084-end-project/03_textures/assets/stone_bricks_col.jpg"),    # TODO: Set the diffuse texture of the material.
+     "normal_texture": bk.res_path("C:/Users/rbjwe\BK7084-end-project/03_textures/assets/stone_bricks_nrm.png"),     # TODO: Set the normal texture of the material.
+     "specular_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/03_textures/assets/stone_bricks_refl.jpg"),   # TODO: Set the specular texture of the material.
+     "shininess_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/03_textures/assets/stone_bricks_gloss.jpg"),  # TODO: Set the shininess texture of the material.
+}
+
+mesh.set_material(material_mosaic_tiles)
 
 # Finally, we add the mesh to the app and set it to be visible.
 wall = app.add_mesh(mesh)
@@ -170,15 +184,37 @@ Hint: Draw a hexagon on a piece of paper and label the vertices. Then, use the s
       
       Then you can set the positions of the vertices by calling `mesh.positions = positions`.
 """
+wall.set_visible(False)
 hexagon_mesh = bk.Mesh()
-hexagon_mesh.positions = None  # TODO: Set the positions of the vertices.
-hexagon_mesh.texcoords = []    # TODO: Set the texture coordinates of the vertices.
-hexagon_mesh.triangles = []    # TODO: Set the indices of the vertices that form each face.
+#ositions = [[0, 0, 0]]  # TODO: Set the positions of the vertices.
+##texcoords = [[0.5, 0.5]]
+r = 4
+#for i in range(6):
+#    x = np.cos(i*np.radians(60))
+#    y = np.sin(i*np.radians(60))
+#    positions.append([r * x, r * y, 0])
+#    texcoords.append([x * 0.5 + 0.5, y * 0.5 + 0.5])
+
+coords = []
+triangles = []
+pi_over_3 = np.pi / 3
+for i in range(6):
+    coords.append([np.cos(i * pi_over_3), np.sin(i * pi_over_3), 0])
+    if i < 4:
+        triangles.append([0, i + 1, i + 2])
+positions2 = np.array(coords) * r
+texcoords2 = np.array(coords)[:,:2] * 0.5 + 0.5
+
+
+hexagon_mesh.positions = positions2
+hexagon_mesh.texcoords = texcoords2    # TODO: Set the texture coordinates of the vertices.
+#hexagon_mesh.triangles = [[0, 1, 2], [0, 2, 3], [0, 3, 4], [0, 4, 5], [0, 5, 6], [0, 6, 1]]    # TODO: Set the indices of the vertices that form each face.
+hexagon_mesh.triangles = triangles
 
 # Uncomment the following lines once you have completed the above TODOs.
-# hexagon_mesh.set_material(mat)
-# hexagon = app.add_mesh(hexagon_mesh)
-# hexagon.set_visible(True)
+hexagon_mesh.set_material(material_mosaic_tiles)
+hexagon = app.add_mesh(hexagon_mesh)
+hexagon.set_visible(True)
 
 # TODO: Set the transform of the hexagon to make it possible to manipulate with the keyboard.
 #       Set the transform after the wall.set_transform(transform) line, at the end of the on_update function.
