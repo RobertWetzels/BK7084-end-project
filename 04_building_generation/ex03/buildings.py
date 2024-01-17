@@ -82,6 +82,7 @@ class Skyscraper:
             wall4.set_visible(True)
 
 
+
 class Highrise:
     """A highrise class that procedurally generates
     a highrise building given a number of floors and width.
@@ -137,3 +138,7 @@ class Office:
             wall5 = app.add_mesh(OfficeWall2(max_width, max_width), parent=floor1)
             wall5.set_transform(Mat4.from_translation(Vec3(max_width/6, max_width / 6, max_width / 6)) * Mat4.from_rotation_y(-90, True))
             wall5.set_visible(True)
+            
+            wall6 = app.add_mesh(OfficeWall2(max_width, max_width), parent=floor1)
+            wall6.set_transform(Mat4.from_translation(Vec3(max_width/6, max_width / 6, max_width / 6)) * Mat4.from_rotation_y(-90, True))
+            wall6.set_visible(True)
