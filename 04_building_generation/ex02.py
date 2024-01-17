@@ -96,7 +96,7 @@ to scale the wall to the desired size.
 Try to run the following code to see the result.
 
 Remind yourself that the wall is a rectangle with a window in the middle. The window is a square hole in the wall.
-
+hallo
 Q1: Why do we repeat the 2nd row of vertices?
 Hint: Think about how the texture coordinates are used to map the texture to the mesh.
 """
