@@ -51,7 +51,7 @@ class BasicWall(bk.Mesh):
     def __new__(cls, *args, **kwargs):
         return super().__new__(cls)
 
-    def __init__(self, w=1, h=1, m=material_basic_bricks):
+    def __init__(self, w, h, m=material_basic_bricks):
         super().__init__()
         self.w = w
         self.h = h
@@ -71,7 +71,7 @@ class BasicFloor(bk.Mesh):
     def __new__(cls, *args, **kwargs):
         return super().__new__(cls)
 
-    def __init__(self, w=1, h=1, m=material_basic_floor):
+    def __init__(self, w, h, m=material_basic_floor):
         super().__init__()
         self.w = w
         self.h = h
@@ -87,12 +87,107 @@ class BasicFloor(bk.Mesh):
         self.triangles = [[0, 2, 1], [0, 3, 2]]
         self.materials = [m]
 
+class OfficeFloor(bk.Mesh):
+    def __new__(cls, *args, **kwargs):
+        return super().__new__(cls)
+
+    def __init__(self, w, h, m=material_basic_floor):
+        super().__init__()
+        self.w = w
+        self.h = h
+        self.name = "OfficeFloormesh"
+        # self.materials = materials
+        self.positions = [
+            [-w/2, 0, h/2],
+            [-w/2, 0, -h/6],
+            [-w/6, 0, h/2],
+            [-w/6, 0, -h/6],
+            [-w/2, 0, -h/2],
+            [w/2, 0, -h/2],
+            [w/2, 0, -h/6],
+            [w/6, 0, -h/6],
+            [w/6, 0, h/2],
+            [w/2, 0, h/2]
+        ]
+        self.texcoords = [
+            [0, 1],
+            [0, 1/3],
+            [1/3, 1],
+            [1/3, 1/3],
+            [0, 0],
+            [1, 0],
+            [1, 1/3],
+            [2/3, 1/3],
+            [2/3, 1],
+            [1, 1]
+            ]
+        self.triangles = [
+            [1, 0, 2],
+            [1, 2, 3],
+            [4, 1, 6],
+            [4, 6, 5],
+            [7, 9, 6],
+            [7, 8, 9]
+            ]
+        self.materials = [m]
+
+class OfficeWall1(bk.Mesh):
+    """
+    Create a basic wall mesh with the given size and material.
+    This class is a subclass of bk.Mesh, so it can be used as a mesh. For example,
+    you can create a mesh instance by `mesh = BasicWallMesh(...)`, and then add it to
+    a scene by `app.add_mesh(mesh)`. It's the same as using `mesh = create_basic_wall(...)`.
+    """
+
+    def __new__(cls, *args, **kwargs):
+        return super().__new__(cls)
+
+    def __init__(self, w, h, m=material_basic_bricks):
+        super().__init__()
+        self.w = w
+        self.h = h
+        self.name = "BasicWallMesh"
+        self.positions = [
+            [-w / 3, -h / 6, 0],
+            [w / 3, -h / 6, 0],
+            [w / 3, h / 6, 0],
+            [-w / 3, h / 6, 0],
+        ]
+        self.texcoords = [[0, 0], [1, 0], [1, 1/2], [0, 1/2]]
+        self.triangles = [[0, 1, 2], [0, 2, 3]]
+        self.materials = [m]
+
+class OfficeWall2(bk.Mesh):
+    """
+    Create a basic wall mesh with the given size and material.
+    This class is a subclass of bk.Mesh, so it can be used as a mesh. For example,
+    you can create a mesh instance by `mesh = BasicWallMesh(...)`, and then add it to
+    a scene by `app.add_mesh(mesh)`. It's the same as using `mesh = create_basic_wall(...)`.
+    """
+
+    def __new__(cls, *args, **kwargs):
+        return super().__new__(cls)
+
+    def __init__(self, w, h, m=material_basic_bricks):
+        super().__init__()
+        self.w = w
+        self.h = h
+        self.name = "BasicWallMesh"
+        self.positions = [
+            [-w / 2, -h / 6, 0],
+            [w / 2, -h / 6, 0],
+            [w / 2, h / 6, 0],
+            [-w / 2, h / 6, 0],
+        ]
+        self.texcoords = [[0, 0], [1, 0], [1, 1], [0, 1]]
+        self.triangles = [[0, 1, 2], [0, 2, 3]]
+        self.materials = [m]
 
 class BasicWindowWall(bk.Mesh):
     def __new__(cls, *args, **kwargs):
         return super().__new__(cls)
 
-    def __init__(self, w=1, h=1):
+    def __init__(self, w, h):
         super().__init__()
         self.w = w
         self.h = h
@@ -120,3 +215,5 @@ class BasicWindowWall(bk.Mesh):
             bk.SubMesh(0, 8, 0),
             bk.SubMesh(8, 10, 1),
         ]
+
+# class OfficeWall(bk.Mesh):

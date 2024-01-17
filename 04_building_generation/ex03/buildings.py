@@ -111,6 +111,29 @@ class Office:
             The maximum width for each component.
     """
     def __init__(self, app, num_floors, max_width):
-        floor1 = app.add_mesh(BasicFloor(max_width, max_width), parent=self.building)
-        floor1.set_transform(Mat4.from_translation(Vec3(0, max_width * i, 0)))
-        floor1.set_visible(True)
+        self.num_floors = num_floors
+        # Spawn the building and save the reference to the building
+        self.building = app.spawn_building()
+        self.building.set_visible(True)
+        for i in range(self.num_floors):
+            floor1 = app.add_mesh(OfficeFloor(max_width, max_width), parent=self.building)
+            floor1.set_transform(Mat4.from_translation(Vec3(0, 3*i, 0)) * Mat4.from_rotation_y(90 * i, True))
+            floor1.set_visible(True)
+            floor2 = app.add_mesh(OfficeFloor(max_width, max_width), parent=floor1)
+            floor2.set_transform(Mat4.from_translation(Vec3(0, 3, 0)))
+            floor2.set_visible(True)
+            wall1 = app.add_mesh(OfficeWall1(max_width, max_width), parent=floor1)
+            wall1.set_transform(Mat4.from_translation(Vec3(0, max_width / 6, -max_width / 6)))
+            wall1.set_visible(True)
+            wall2 = app.add_mesh(OfficeWall1(max_width, max_width), parent=floor1)
+            wall2.set_transform(Mat4.from_translation(Vec3(max_width/3, max_width / 6, max_width / 2)))
+            wall2.set_visible(True)
+            wall3 = app.add_mesh(OfficeWall1(max_width, max_width), parent=floor1)
+            wall3.set_transform(Mat4.from_translation(Vec3(-max_width/3, max_width / 6, max_width / 2)))
+            wall3.set_visible(True)
+            wall4 = app.add_mesh(OfficeWall2(max_width, max_width), parent=floor1)
+            wall4.set_transform(Mat4.from_translation(Vec3(-max_width/6, max_width / 6, max_width / 6)))
+            wall4.set_visible(True)
+            wall5 = app.add_mesh(OfficeWall2(max_width, max_width), parent=floor1)
+            wall5.set_transform(Mat4.from_translation(Vec3(max_width/6, max_width / 6, max_width / 6)) * Mat4.from_rotation_y(-90, True))
+            wall5.set_visible(True)
