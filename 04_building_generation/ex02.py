@@ -145,6 +145,14 @@ mat_outer.textures = {
     "shininess_texture": bk.res_path("../03_textures/assets/stone_bricks_gloss.jpg"),
 }
 
+mat_extra = bk.Material()
+mat_extra.textures = {
+    "diffuse_texture": bk.res_path("../03_textures/assets/mosaic_tiles_col.png"),
+    "normal_texture": bk.res_path("../03_textures/assets/mosaic_tiles_nrm.png"),     # TODO: Set the normal texture of the material.
+    "specular_texture": bk.res_path("../03_textures/assets/mosaic_tiles_refl.png"),   # TODO: Set the specular texture of the material.
+    "shininess_texture": bk.res_path("../03_textures/assets/mosaic_tiles_gloss.png")
+}
+
 """
 We specify the materials of the mesh.
 
@@ -157,7 +165,7 @@ However, in this case, we want to use different materials for different parts of
 need to first specify the materials for the whole mesh. Then we need to specify which part of the mesh uses
 which material.
 """
-mesh.materials = [mat_window, mat_outer]
+mesh.materials = [mat_window, mat_outer, mat_extra]
 """
 A sub-mesh is a part of the mesh that uses the same material. 
 
@@ -183,7 +191,8 @@ materials. In this case, the whole mesh will be rendered with the material of th
 Task 1.3: Try to add another material to the mesh, and add another sub-mesh to the mesh.
 """
 mesh.sub_meshes = [
-    bk.SubMesh(0, 8, 1),
+    bk.SubMesh(0, 4, 1),
+    bk.SubMesh(4, 8, 2),
     bk.SubMesh(8, 10, 0),
 ]
 
