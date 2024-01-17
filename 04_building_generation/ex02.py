@@ -99,6 +99,7 @@ Remind yourself that the wall is a rectangle with a window in the middle. The wi
 
 Q1: Why do we repeat the 2nd row of vertices?
 Hint: Think about how the texture coordinates are used to map the texture to the mesh.
+To create a more smoother and visually appaeling appearance.
 """
 mesh.positions = np.array(
         [
@@ -131,21 +132,17 @@ mesh.triangles = [
 ]
 
 # We create a material for the inner part of the wall
-mat_inner = bk.Material()
-mat_inner.textures = {
+mat_window = bk.Material()
+mat_window.textures = {
+    "diffuse_texture": bk.res_path("../04_building_generation/assets/window.jpg"),
+}
+# We create a material for the outer part of the wall
+mat_outer = bk.Material()
+mat_outer.textures = {
     "diffuse_texture": bk.res_path("../03_textures/assets/stone_bricks_col.jpg"),
     "normal_texture": bk.res_path("../03_textures/assets/stone_bricks_nrm.png"),
     "specular_texture": bk.res_path("../03_textures/assets/stone_bricks_refl.jpg"),
     "shininess_texture": bk.res_path("../03_textures/assets/stone_bricks_gloss.jpg"),
-}
-
-# We create a material for the outer part of the wall
-mat_outer = bk.Material()
-mat_outer.textures = {
-    "diffuse_texture": bk.res_path("../03_textures/assets/mosaic_tiles_col.png"),
-    "normal_texture": bk.res_path("../03_textures/assets/mosaic_tiles_nrm.png"),
-    "specular_texture": bk.res_path("../03_textures/assets/mosaic_tiles_refl.png"),
-    "shininess_texture": bk.res_path("../03_textures/assets/mosaic_tiles_gloss.png"),
 }
 
 """
@@ -160,7 +157,7 @@ However, in this case, we want to use different materials for different parts of
 need to first specify the materials for the whole mesh. Then we need to specify which part of the mesh uses
 which material.
 """
-mesh.materials = [mat_inner, mat_outer]
+mesh.materials = [mat_window, mat_outer]
 """
 A sub-mesh is a part of the mesh that uses the same material. 
 
