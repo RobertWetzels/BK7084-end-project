@@ -157,32 +157,6 @@ class OfficeWall1(bk.Mesh):
         self.triangles = [[0, 1, 2], [0, 2, 3]]
         self.materials = [m]
 
-class OfficeWall2(bk.Mesh):
-    """
-    Create a basic wall mesh with the given size and material.
-    This class is a subclass of bk.Mesh, so it can be used as a mesh. For example,
-    you can create a mesh instance by `mesh = BasicWallMesh(...)`, and then add it to
-    a scene by `app.add_mesh(mesh)`. It's the same as using `mesh = create_basic_wall(...)`.
-    """
-
-    def __new__(cls, *args, **kwargs):
-        return super().__new__(cls)
-
-    def __init__(self, w, h, m=material_basic_bricks):
-        super().__init__()
-        self.w = w
-        self.h = h
-        self.name = "BasicWallMesh"
-        self.positions = [
-            [-w / 2, -h / 6, 0],
-            [w / 2, -h / 6, 0],
-            [w / 2, h / 6, 0],
-            [-w / 2, h / 6, 0],
-        ]
-        self.texcoords = [[0, 0], [1, 0], [1, 1], [0, 1]]
-        self.triangles = [[0, 1, 2], [0, 2, 3]]
-        self.materials = [m]
-
 class BasicWindowWall(bk.Mesh):
     def __new__(cls, *args, **kwargs):
         return super().__new__(cls)
