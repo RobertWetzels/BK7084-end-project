@@ -132,9 +132,10 @@ class Office:
             wall3 = app.add_mesh(OfficeWall1(max_width, max_width), parent=floor1)
             wall3.set_transform(Mat4.from_translation(Vec3(-max_width/3, max_width / 6, max_width / 2)))
             wall3.set_visible(True)
-            wall4 = app.add_mesh(OfficeWall2(max_width, max_width), parent=floor1)
-            wall4.set_transform(Mat4.from_translation(Vec3(-max_width/6, max_width / 6, max_width / 6)))
+            wall4 = app.add_mesh(OfficeWall1(max_width, max_width), parent=floor1)
+            wall4.set_transform(Mat4.from_translation(Vec3(-max_width/6, max_width / 6, 0)) * Mat4.from_rotation_y(90, True))
             wall4.set_visible(True)
+<<<<<<< HEAD
             wall5 = app.add_mesh(OfficeWall2(max_width, max_width), parent=floor1)
             wall5.set_transform(Mat4.from_translation(Vec3(max_width/6, max_width / 6, max_width / 6)) * Mat4.from_rotation_y(-90, True))
             wall5.set_visible(True)
@@ -142,3 +143,8 @@ class Office:
             wall6 = app.add_mesh(OfficeWall2(max_width, max_width), parent=floor1)
             wall6.set_transform(Mat4.from_translation(Vec3(max_width/6, max_width / 6, max_width / 6)) * Mat4.from_rotation_y(-90, True))
             wall6.set_visible(True)
+=======
+            wall5 = app.add_mesh(OfficeWall1(max_width, max_width), parent=floor1)
+            wall5.set_transform(Mat4.from_translation(Vec3(max_width/6, max_width / 6, 0)) * Mat4.from_rotation_y(-90, True))
+            wall5.set_visible(True)
+>>>>>>> 792e0fea8be7457c54d2257bfbfcd030709e8934
