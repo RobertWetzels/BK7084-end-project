@@ -139,23 +139,23 @@ exercise. The textures are already provided in the `assets` folder of last exerc
 """
 material_mosaic_tiles = bk.Material()
 material_mosaic_tiles.textures = {
-    "diffuse_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/03_textures/assets/mosaic_tiles_col.png"),
-    "normal_texture": bk.res_path("C:/Users/rbjwe\BK7084-end-project/03_textures/assets/mosaic_tiles_nrm.png"),     # TODO: Set the normal texture of the material.
-    "specular_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/03_textures/assets/mosaic_tiles_refl.png"),   # TODO: Set the specular texture of the material.
-    "shininess_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/03_textures/assets/mosaic_tiles_gloss.png")
+    "diffuse_texture": bk.res_path("../03_textures/assets/mosaic_tiles_col.png"),
+    "normal_texture": bk.res_path("../03_textures/assets/mosaic_tiles_nrm.png"),     # TODO: Set the normal texture of the material.
+    "specular_texture": bk.res_path("../03_textures/assets/mosaic_tiles_refl.png"),   # TODO: Set the specular texture of the material.
+    "shininess_texture": bk.res_path("../03_textures/assets/mosaic_tiles_gloss.png")
 }
 
 material_basic_ground = bk.Material()
 material_basic_ground.textures = {
-    "diffuse_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/04_building_generation/assets/grass.jpg"),
+    "diffuse_texture": bk.res_path("../04_building_generation/assets/grass.jpg"),
 }
 
 material_stone_bricks = bk.Material()
 material_stone_bricks.textures = {
-     "diffuse_texture": bk.res_path("C:/Users/rbjwe\BK7084-end-project/03_textures/assets/stone_bricks_col.jpg"),    # TODO: Set the diffuse texture of the material.
-     "normal_texture": bk.res_path("C:/Users/rbjwe\BK7084-end-project/03_textures/assets/stone_bricks_nrm.png"),     # TODO: Set the normal texture of the material.
-     "specular_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/03_textures/assets/stone_bricks_refl.jpg"),   # TODO: Set the specular texture of the material.
-     "shininess_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/03_textures/assets/stone_bricks_gloss.jpg"),  # TODO: Set the shininess texture of the material.
+     "diffuse_texture": bk.res_path("../03_textures/assets/stone_bricks_col.jpg"),    # TODO: Set the diffuse texture of the material.
+     "normal_texture": bk.res_path("../03_textures/assets/stone_bricks_nrm.png"),     # TODO: Set the normal texture of the material.
+     "specular_texture": bk.res_path("../03_textures/assets/stone_bricks_refl.jpg"),   # TODO: Set the specular texture of the material.
+     "shininess_texture": bk.res_path("../03_textures/assets/stone_bricks_gloss.jpg"),  # TODO: Set the shininess texture of the material.
 }
 
 mesh.set_material(material_mosaic_tiles)
