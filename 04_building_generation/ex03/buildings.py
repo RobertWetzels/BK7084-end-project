@@ -123,6 +123,7 @@ class Office:
             floor2 = app.add_mesh(OfficeFloor(max_width, max_width), parent=floor1)
             floor2.set_transform(Mat4.from_translation(Vec3(0, 3, 0)))
             floor2.set_visible(True)
+            
             wall1 = app.add_mesh(OfficeWall1(max_width, max_width), parent=floor1)
             wall1.set_transform(Mat4.from_translation(Vec3(0, max_width / 6, -max_width / 6)))
             wall1.set_visible(True)
@@ -148,6 +149,7 @@ class Office:
             wall8 = app.add_mesh(OfficeWall1(max_width, max_width), parent=floor1)
             wall8.set_transform(Mat4.from_translation(Vec3(max_width/2, max_width / 6, -max_width/3)) * Mat4.from_rotation_y(90, True))
             wall8.set_visible(True)
+
             wall9 = app.add_mesh(OfficeWall1(max_width, max_width), parent=floor1)
             wall9.set_transform(Mat4.from_translation(Vec3(max_width/3, max_width / 6, -max_width/2)) * Mat4.from_rotation_y(180, True))
             wall9.set_visible(True)
@@ -157,4 +159,20 @@ class Office:
             wall11 = app.add_mesh(OfficeWall1(max_width, max_width), parent=floor1)
             wall11.set_transform(Mat4.from_translation(Vec3(-max_width/3, max_width / 6, -max_width/2)) * Mat4.from_rotation_y(180, True))
             wall11.set_visible(True)
-            
+
+            wall12 = app.add_mesh(OfficeWall1(max_width, max_width), parent=floor1)
+            wall12.set_transform(Mat4.from_translation(Vec3(-max_width/2, max_width / 6, -max_width/3)) * Mat4.from_rotation_y(-90, True))
+            wall12.set_visible(True)
+            wall13 = app.add_mesh(OfficeWall1(max_width, max_width), parent=floor1)
+            wall13.set_transform(Mat4.from_translation(Vec3(-max_width/2, max_width / 6, 0)) * Mat4.from_rotation_y(-90, True))
+            wall13.set_visible(True)
+            wall14 = app.add_mesh(OfficeWall1(max_width, max_width), parent=floor1)
+            wall14.set_transform(Mat4.from_translation(Vec3(-max_width/2, max_width / 6, max_width/3)) * Mat4.from_rotation_y(-90, True))
+            wall14.set_visible(True)
+
+            wall15 = app.add_mesh(OfficeWall1(max_width, max_width), parent=floor1)
+            wall15.set_transform(Mat4.from_translation(Vec3(max_width/6, max_width / 6, max_width/3)) * Mat4.from_rotation_y(-90, True))
+            wall15.set_visible(True)
+            wall16 = app.add_mesh(OfficeWall1(max_width, max_width), parent=floor1)
+            wall16.set_transform(Mat4.from_translation(Vec3(-max_width/6, max_width / 6, max_width/3)) * Mat4.from_rotation_y(90, True))
+            wall16.set_visible(True)

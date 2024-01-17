@@ -40,6 +40,14 @@ material_mosaic_tiles.textures = {
     "shininess_texture": bk.res_path("../03_textures/assets/mosaic_tiles_gloss.png")
 }
 
+mat_office_delfts = bk.Material()
+mat_office_delfts.textures = {
+   "diffuse_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/05_optimization/assets/Tiles101_2K-PNG/Tiles101_2K-PNG_Color.png"),
+    #"normal_texture": bk.res_path("../05_optimization/assets\Tiles101_2K-PNG\Tiles101_2K-PNG_NormalGL.png"),  
+    #"specular_texture": bk.res_path("../05_optimization/assets\Tiles101_2K-PNG\Tiles101_2K-PNG_Displacement.png"), 
+    #"shininess_texture": bk.res_path("../05_optimization/assets\Tiles101_2K-PNG\Tiles101_2K-PNG_AmbientOcclusion.png")
+}
+
 class BasicWall(bk.Mesh):
     """
     Create a basic wall mesh with the given size and material.
@@ -142,7 +150,7 @@ class OfficeWall1(bk.Mesh):
     def __new__(cls, *args, **kwargs):
         return super().__new__(cls)
 
-    def __init__(self, w, h, m=material_basic_bricks):
+    def __init__(self, w, h, m=mat_office_delfts):
         super().__init__()
         self.w = w
         self.h = h

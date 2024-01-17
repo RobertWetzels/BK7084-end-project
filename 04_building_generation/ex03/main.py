@@ -84,7 +84,7 @@ highrise = Skyscraper(app, 1, 3)
 highrise.building.set_transform(Mat4.from_translation(Vec3(6, 0, 0)))
 
 office = Office(app, 1, 9)
-office.building.set_transform(Mat4.from_translation(Vec3(-10, 1, 0)))
+office.building.set_transform(Mat4.from_translation(Vec3(-10, 0, 0)))
 
 ground_mesh = bk.Mesh.create_quad(48, bk.Alignment.XY)
 ground_mesh.set_material(material_basic_ground)
