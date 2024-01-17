@@ -34,7 +34,10 @@ material_basic_ground.textures = {
 
 material_mosaic_tiles = bk.Material()
 material_mosaic_tiles.textures = {
-    "diffuse_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/03_textures/assets/mosaic_tiles_gloss.png"),
+    "diffuse_texture": bk.res_path("../03_textures/assets/mosaic_tiles_col.png"),
+    "normal_texture": bk.res_path("../03_textures/assets/mosaic_tiles_nrm.png"),  
+    "specular_texture": bk.res_path("../03_textures/assets/mosaic_tiles_refl.png"), 
+    "shininess_texture": bk.res_path("../03_textures/assets/mosaic_tiles_gloss.png")
 }
 
 class BasicWall(bk.Mesh):

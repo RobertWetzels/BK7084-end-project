@@ -111,4 +111,6 @@ class Office:
             The maximum width for each component.
     """
     def __init__(self, app, num_floors, max_width):
-        pass
+        floor1 = app.add_mesh(BasicFloor(max_width, max_width), parent=self.building)
+        floor1.set_transform(Mat4.from_translation(Vec3(0, max_width * i, 0)))
+        floor1.set_visible(True)
