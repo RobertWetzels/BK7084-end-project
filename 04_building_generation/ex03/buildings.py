@@ -100,12 +100,13 @@ class Highrise:
         # Spawn the building and save the reference to the building
         self.building = app.spawn_building()
         self.building.set_visible(True)
+        max_width = max_width/2
         for i in range(self.num_floors):
             floor1 = app.add_mesh(HighriseFloor(max_width, max_width, material_basic_floor), parent=self.building)
-            floor1.set_transform(Mat4.from_translation(Vec3(0, 3*i, 0)) * Mat4.from_rotation_y(90 * i, True))
+            floor1.set_transform(Mat4.from_translation(Vec3(0, max_width*i, 0)) * Mat4.from_rotation_y(90 * i, True))
             floor1.set_visible(True)
             floor2 = app.add_mesh(HighriseFloor(max_width, max_width, material_basic_ground), parent=floor1)
-            floor2.set_transform(Mat4.from_translation(Vec3(0, 3, 0)))
+            floor2.set_transform(Mat4.from_translation(Vec3(0, max_width, 0)))
             floor2.set_visible(True)
 
             side = 2 * np.sin(np.pi / 12) * max_width
@@ -189,14 +190,14 @@ class Office:
         self.building.set_visible(True)
         for i in range(self.num_floors):
             floor1 = app.add_mesh(OfficeFloor(max_width, max_width, material_basic_floor), parent=self.building)
-            floor1.set_transform(Mat4.from_translation(Vec3(0, 3*i, 0)) * Mat4.from_rotation_y(90 * i, True))
+            floor1.set_transform(Mat4.from_translation(Vec3(0, max_width/3*i, 0)) * Mat4.from_rotation_y(90 * i, True))
             floor1.set_visible(True)
             floor2 = app.add_mesh(OfficeFloor(max_width, max_width, material_gold), parent=floor1)
-            floor2.set_transform(Mat4.from_translation(Vec3(0, 3, 0)))
+            floor2.set_transform(Mat4.from_translation(Vec3(0, max_width/3, 0)))
             floor2.set_visible(True)
             if i != self.num_floors - 1:
                 floor2 = app.add_mesh(OfficeFloor(max_width, max_width, material_gold), parent=floor1)
-                floor2.set_transform(Mat4.from_translation(Vec3(0, 3, 0)) * Mat4.from_rotation_x(180, True))
+                floor2.set_transform(Mat4.from_translation(Vec3(0, max_width/3, 0)) * Mat4.from_rotation_x(180, True))
                 floor2.set_visible(True)
 
             if i == 0:

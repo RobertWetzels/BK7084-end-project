@@ -181,12 +181,12 @@ class OfficeWall1(bk.Mesh):
         super().__init__()
         self.w = w
         self.h = h
-        self.name = "BasicWallMesh"
+        self.name = f"BasicWallMesh{w}{h}"
         self.positions = [
-            [-w / 3, -h / 6, 0],
-            [w / 3, -h / 6, 0],
-            [w / 3, h / 6, 0],
-            [-w / 3, h / 6, 0],
+            [-w / 6, -h / 6, 0],
+            [w / 6, -h / 6, 0],
+            [w / 6, h / 6, 0],
+            [-w / 6, h / 6, 0],
         ]
         self.texcoords = [[0, 0], [1, 0], [1, 1/2], [0, 1/2]]
         self.triangles = [[0, 1, 2], [0, 2, 3]]
