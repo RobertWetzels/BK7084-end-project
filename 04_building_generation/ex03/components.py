@@ -126,7 +126,7 @@ class OfficeFloor(bk.Mesh):
     def __new__(cls, *args, **kwargs):
         return super().__new__(cls)
 
-    def __init__(self, w, h, m=material_basic_floor):
+    def __init__(self, w, h, m):
         super().__init__()
         self.w = w
         self.h = h
@@ -162,7 +162,7 @@ class OfficeFloor(bk.Mesh):
             [4, 1, 6],
             [4, 6, 5],
             [7, 9, 6],
-            [7, 8, 9]
+            [7, 8, 9],
             ]
         self.materials = [m]
 
@@ -293,7 +293,7 @@ class SkyscraperFloor(bk.Mesh):
         super().__init__()
         self.w = w
         self.h = h
-        self.name = "OfficeFloormesh"
+        self.name = "SkyscraperFloormesh"
         # self.materials = materials
         self.positions = [[-0.5*w, 0, -0.25*np.sqrt(3)*w],
                           [0, 0, 0.25*np.sqrt(3)*w],
@@ -315,22 +315,24 @@ class DoorWall(bk.Mesh):
         super().__init__()
         self.w = w
         self.h = h
-        self.name = "BasicWindowWallMesh"
+        self.name = "DoorWallMesh"
         # self.materials = materials
         self.positions = [
             [-w/2, -h/2, 0.0], [w/2, -h/2, 0.0], [w/2, h/2, 0.0], [-w/2, h/2, 0.0],
+            [-w*0.2, -h/2, 0.0], [w*0.2, -h/2, 0.0], [w*0.2, h*0.2, 0.0], [-w*0.2, h*0.2, 0.0],
             [-w*0.2, -h/2, 0.0], [w*0.2, -h/2, 0.0], [w*0.2, h*0.2, 0.0], [-w*0.2, h*0.2, 0.0]
         ]
         self.texcoords = [
             [0.0, 0.0], [1.0, 0.0], [1.0, 1.0], [0, 1.0],
-            [2/5, 0], [4/5, 0], [4/5, 4/5], [2/5, 4/5]
+            [3/10, 0], [7/10, 0], [7/10, 7/10], [3/10, 7/10],
+            [1, 1], [0, 1], [0, 0], [1, 0]
         ]
         self.triangles = [
-            [0, 3, 7], [0, 7, 4], [7, 3, 2], [7, 2, 6], [5, 6, 2], [5, 2, 1],
-            [4, 7, 6], [4, 6, 5]
+            [0, 7, 3], [0, 4, 7], [7, 2, 3], [6, 2, 7], [2, 6, 5], [5, 1, 2],
+            [8, 9, 10], [8, 10, 11]
         ]
         self.materials = [
-            material_basic_bricks,
+            mat_office_delfts,
             material_door,
         ]
         self.sub_meshes = [

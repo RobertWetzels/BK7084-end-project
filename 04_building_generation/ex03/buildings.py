@@ -61,11 +61,11 @@ class Skyscraper:
             # components to one 'base' component (floor1, see below). Then we
             # only have to move the base component up higher and the framework
             # takes care of the rest.
-            floor1 = app.add_mesh(BasicFloor(max_width, max_width), parent=self.building)
+            floor1 = app.add_mesh(SkyscraperFloor(max_width, max_width), parent=self.building)
             # Place the base component higher each time (i)
             floor1.set_transform(Mat4.from_translation(Vec3(0, max_width * i, 0)))
             floor1.set_visible(True)
-            floor2 = app.add_mesh(BasicFloor(max_width, max_width), parent=floor1)
+            floor2 = app.add_mesh(SkyscraperFloor(max_width, max_width), parent=floor1)
             floor2.set_transform(Mat4.from_translation(Vec3(0, max_width, 0)))
             floor2.set_visible(True)
             wall1 = app.add_mesh(BasicWindowWall(max_width, max_width), parent=floor1)
@@ -194,8 +194,15 @@ class Office:
             floor2 = app.add_mesh(OfficeFloor(max_width, max_width, material_gold), parent=floor1)
             floor2.set_transform(Mat4.from_translation(Vec3(0, 3, 0)))
             floor2.set_visible(True)
+            if i != self.num_floors - 1:
+                floor2 = app.add_mesh(OfficeFloor(max_width, max_width, material_gold), parent=floor1)
+                floor2.set_transform(Mat4.from_translation(Vec3(0, 3, 0)) * Mat4.from_rotation_x(180, True))
+                floor2.set_visible(True)
 
-            wall1 = app.add_mesh(OfficeWall1(max_width, max_width), parent=floor1)
+            if i == 0:
+                wall1 = app.add_mesh(DoorWall(max_width/3, max_width/3), parent=floor1)
+            else:
+                wall1 = app.add_mesh(OfficeWall1(max_width, max_width), parent=floor1)
             wall1.set_transform(Mat4.from_translation(Vec3(0, max_width / 6, -max_width / 6)))
             wall1.set_visible(True)
             wall2 = app.add_mesh(OfficeWall1(max_width, max_width), parent=floor1)
