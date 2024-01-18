@@ -32,6 +32,11 @@ material_basic_ground.textures = {
     "diffuse_texture": bk.res_path("../assets/grass.jpg"),
 }
 
+material_door = bk.Material()
+material_door.textures = {
+    "diffuse_texture": bk.res_path("../assets/door.jpg"),
+}
+
 material_mosaic_tiles = bk.Material()
 material_mosaic_tiles.textures = {
     "diffuse_texture": bk.res_path("../03_textures/assets/mosaic_tiles_col.png"),
@@ -46,6 +51,28 @@ mat_office_delfts.textures = {
     #"normal_texture": bk.res_path("../05_optimization/assets\Tiles101_2K-PNG\Tiles101_2K-PNG_NormalGL.png"),  
     #"specular_texture": bk.res_path("../05_optimization/assets\Tiles101_2K-PNG\Tiles101_2K-PNG_Displacement.png"), 
     #"shininess_texture": bk.res_path("../05_optimization/assets\Tiles101_2K-PNG\Tiles101_2K-PNG_AmbientOcclusion.png")
+}
+material_mosaic_tiles = bk.Material()
+material_mosaic_tiles.textures = {
+    "diffuse_texture": bk.res_path("../03_textures/assets/mosaic_tiles_col.png"),
+    "normal_texture": bk.res_path("../03_textures/assets/mosaic_tiles_nrm.png"),  
+    "specular_texture": bk.res_path("../03_textures/assets/mosaic_tiles_refl.png"), 
+    "shininess_texture": bk.res_path("../03_textures/assets/mosaic_tiles_gloss.png")
+}
+material_windowwalls = bk.Material()
+material_windowwalls.textures = {
+    "diffuse_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/structures/Facade009_2K-PNG_Color.png"),
+    #"normal_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/structures/Facade009_2K-PNG_NormalDX.png"),  
+    #"specular_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/structures/Facade009_2K-PNG_Roughness.png.png"), 
+    #"shininess_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/structures/Facade009_2K-PNG_Metalness.png.png")
+}
+
+material_gold = bk.Material()
+material_gold.textures = {
+    "diffuse_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/03_textures/assets/Foil002_2K-PNG/Foil002_2K-PNG_Color.png"),
+    "normal_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/03_textures/assets/Foil002_2K-PNG/Foil002_2K-PNG_NormalDX.png"),  
+    "specular_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/03_textures/assets/Foil002_2K-PNG/Foil002_2K-PNG_Roughness.png"), 
+    "shininess_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/03_textures/assets/Foil002_2K-PNG/Foil002_2K-PNG_Displacement.png")
 }
 
 class BasicWall(bk.Mesh):
@@ -99,7 +126,7 @@ class OfficeFloor(bk.Mesh):
     def __new__(cls, *args, **kwargs):
         return super().__new__(cls)
 
-    def __init__(self, w, h, m=material_basic_floor):
+    def __init__(self, w, h, m):
         super().__init__()
         self.w = w
         self.h = h
@@ -129,13 +156,13 @@ class OfficeFloor(bk.Mesh):
             [2/3, 1],
             [1, 1]
             ]
-        self.triangles = [
+        self.triangles = [                      #fix triangles
             [1, 0, 2],
             [1, 2, 3],
             [4, 1, 6],
             [4, 6, 5],
             [7, 9, 6],
-            [7, 8, 9]
+            [7, 8, 9],
             ]
         self.materials = [m]
 
@@ -202,11 +229,11 @@ class HighriseFloor(bk.Mesh):
     def __new__(cls, *args, **kwargs):
         return super().__new__(cls)
 
-    def __init__(self, w, h, m=material_basic_floor):
+    def __init__(self, w, h, m):
         super().__init__()
         self.w = w
         self.h = h
-        self.name = "HighriseFloormesh"
+        self.name = f"HighriseFloormesh{w}{h}{m}"
         # self.materials = materials
         self.materials = [m] 
         coords = []
@@ -226,6 +253,37 @@ class HighriseFloor(bk.Mesh):
         # Assign values to mesh properties
         self.triangles = triangles
         self.materials = [m]
+        
+class OfficeWall2(bk.Mesh):
+    """
+    Create a basic wall mesh with the given size and material.
+    This class is a subclass of bk.Mesh, so it can be used as a mesh. For example,
+    you can create a mesh instance by `mesh = BasicWallMesh(...)`, and then add it to
+    a scene by `app.add_mesh(mesh)`. It's the same as using `mesh = create_basic_wall(...)`.
+    """
+
+    def __new__(cls, *args, **kwargs):
+        return super().__new__(cls)
+
+    def __init__(self, w, h):
+        super().__init__()
+        self.w = w
+        self.h = h
+        self.name = f"OfficeWall2Mesh{w}{h}"
+        self.positions = [
+            [-w / 2, -h / 2, 0],
+            [w / 2, -h / 2, 0],
+            [w / 2, h / 2, 0],
+            [-w / 2, h / 2, 0],
+        ]
+        if w == h:
+            self.texcoords = [[0, 0], [1, 0], [1, 1], [0, 1]]
+        elif w > h:
+            self.texcoords = [[0, 0], [1, 0], [1, h/w], [0, h/w]]
+        else:
+            self.texcoords = [[0, 0], [w/h, 0], [w/h, 1], [0, 1]]
+        self.triangles = [[0, 1, 2], [0, 2, 3]]
+        self.materials = [material_windowwalls]
 
 class SkyscraperFloor(bk.Mesh):
     def __new__(cls, *args, **kwargs):
@@ -235,7 +293,7 @@ class SkyscraperFloor(bk.Mesh):
         super().__init__()
         self.w = w
         self.h = h
-        self.name = "OfficeFloormesh"
+        self.name = "SkyscraperFloormesh"
         # self.materials = materials
         self.positions = [[-0.5*w, 0, -0.25*np.sqrt(3)*w],
                           [0, 0, 0.25*np.sqrt(3)*w],
@@ -248,3 +306,36 @@ class SkyscraperFloor(bk.Mesh):
         self.triangles = [[0,1,2]
             ]
         self.materials = [m]
+
+class DoorWall(bk.Mesh):
+    def __new__(cls, *args, **kwargs):
+        return super().__new__(cls)
+
+    def __init__(self, w, h):
+        super().__init__()
+        self.w = w
+        self.h = h
+        self.name = "DoorWallMesh"
+        # self.materials = materials
+        self.positions = [
+            [-w/2, -h/2, 0.0], [w/2, -h/2, 0.0], [w/2, h/2, 0.0], [-w/2, h/2, 0.0],
+            [-w*0.2, -h/2, 0.0], [w*0.2, -h/2, 0.0], [w*0.2, h*0.2, 0.0], [-w*0.2, h*0.2, 0.0],
+            [-w*0.2, -h/2, 0.0], [w*0.2, -h/2, 0.0], [w*0.2, h*0.2, 0.0], [-w*0.2, h*0.2, 0.0]
+        ]
+        self.texcoords = [
+            [0.0, 0.0], [1.0, 0.0], [1.0, 1.0], [0, 1.0],
+            [3/10, 0], [7/10, 0], [7/10, 7/10], [3/10, 7/10],
+            [1, 1], [0, 1], [0, 0], [1, 0]
+        ]
+        self.triangles = [
+            [0, 7, 3], [0, 4, 7], [7, 2, 3], [6, 2, 7], [2, 6, 5], [5, 1, 2],
+            [8, 9, 10], [8, 10, 11]
+        ]
+        self.materials = [
+            mat_office_delfts,
+            material_door,
+        ]
+        self.sub_meshes = [
+            bk.SubMesh(0, 6, 0),
+            bk.SubMesh(6, 8, 1),
+        ]
