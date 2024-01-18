@@ -138,7 +138,6 @@ class Office:
             wall5 = app.add_mesh(OfficeWall1(max_width, max_width), parent=floor1)
             wall5.set_transform(Mat4.from_translation(Vec3(max_width/6, max_width / 6, 0)) * Mat4.from_rotation_y(-90, True))
             wall5.set_visible(True)
-
             wall6 = app.add_mesh(OfficeWall1(max_width, max_width), parent=floor1)
             wall6.set_transform(Mat4.from_translation(Vec3(max_width/2, max_width / 6, 0)) * Mat4.from_rotation_y(90, True))
             wall6.set_visible(True)
