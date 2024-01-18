@@ -148,7 +148,7 @@ class OfficeFloor(bk.Mesh):
             [2/3, 1],
             [1, 1]
             ]
-        self.triangles = [
+        self.triangles = [                      #fix triangles
             [1, 0, 2],
             [1, 2, 3],
             [4, 1, 6],
@@ -221,11 +221,11 @@ class HighriseFloor(bk.Mesh):
     def __new__(cls, *args, **kwargs):
         return super().__new__(cls)
 
-    def __init__(self, w, h, m=material_basic_floor):
+    def __init__(self, w, h, m):
         super().__init__()
         self.w = w
         self.h = h
-        self.name = "HighriseFloormesh"
+        self.name = f"HighriseFloormesh{w}{h}{m}"
         # self.materials = materials
         self.materials = [m] 
         coords = []

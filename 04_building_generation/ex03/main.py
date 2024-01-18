@@ -80,10 +80,10 @@ app.add_directional_light(Vec3(-1, -1, -1), bk.Color(0.8, 0.8, 0.8))
 skyscraper = Skyscraper(app, 1, 3)
 skyscraper.building.set_transform(Mat4.identity())
 
-highrise = Highrise(app, 2, 3)
+highrise = Highrise(app, 10, 3)
 highrise.building.set_transform(Mat4.from_translation(Vec3(6, 1, 0)))
 
-office = Office(app, 1, 9)
+office = Office(app, 5, 9)
 office.building.set_transform(Mat4.from_translation(Vec3(-10, 0, 0)))
 
 ground_mesh = bk.Mesh.create_quad(48, bk.Alignment.XY)
