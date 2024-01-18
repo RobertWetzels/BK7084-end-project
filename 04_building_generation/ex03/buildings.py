@@ -189,8 +189,12 @@ class Office:
         self.building = app.spawn_building()
         self.building.set_visible(True)
         for i in range(self.num_floors):
+            if i != 0:
+                random = np.random.randint(0,4)
+            else:
+                random = 0
             floor1 = app.add_mesh(OfficeFloor(max_width, max_width, material_basic_floor), parent=self.building)
-            floor1.set_transform(Mat4.from_translation(Vec3(0, max_width/3*i, 0)) * Mat4.from_rotation_y(90 * i, True))
+            floor1.set_transform(Mat4.from_translation(Vec3(0, max_width/3*i, 0)) * Mat4.from_rotation_y(90 * random, True))
             floor1.set_visible(True)
             floor2 = app.add_mesh(OfficeFloor(max_width, max_width, material_gold), parent=floor1)
             floor2.set_transform(Mat4.from_translation(Vec3(0, max_width/3, 0)))
