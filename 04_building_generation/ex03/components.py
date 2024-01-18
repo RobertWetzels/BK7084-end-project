@@ -40,6 +40,14 @@ material_mosaic_tiles.textures = {
     "shininess_texture": bk.res_path("../03_textures/assets/mosaic_tiles_gloss.png")
 }
 
+mat_office_delfts = bk.Material()
+mat_office_delfts.textures = {
+   "diffuse_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/05_optimization/assets/Tiles101_2K-PNG/Tiles101_2K-PNG_Color.png"),
+    #"normal_texture": bk.res_path("../05_optimization/assets\Tiles101_2K-PNG\Tiles101_2K-PNG_NormalGL.png"),  
+    #"specular_texture": bk.res_path("../05_optimization/assets\Tiles101_2K-PNG\Tiles101_2K-PNG_Displacement.png"), 
+    #"shininess_texture": bk.res_path("../05_optimization/assets\Tiles101_2K-PNG\Tiles101_2K-PNG_AmbientOcclusion.png")
+}
+
 class BasicWall(bk.Mesh):
     """
     Create a basic wall mesh with the given size and material.
@@ -142,7 +150,7 @@ class OfficeWall1(bk.Mesh):
     def __new__(cls, *args, **kwargs):
         return super().__new__(cls)
 
-    def __init__(self, w, h, m=material_basic_bricks):
+    def __init__(self, w, h, m=mat_office_delfts):
         super().__init__()
         self.w = w
         self.h = h
@@ -190,4 +198,53 @@ class BasicWindowWall(bk.Mesh):
             bk.SubMesh(8, 10, 1),
         ]
 
-# class OfficeWall(bk.Mesh):
+class HighriseFloor(bk.Mesh):
+    def __new__(cls, *args, **kwargs):
+        return super().__new__(cls)
+
+    def __init__(self, w, h, m=material_basic_floor):
+        super().__init__()
+        self.w = w
+        self.h = h
+        self.name = "HighriseFloormesh"
+        # self.materials = materials
+        self.materials = [m] 
+        coords = []
+        triangles = []
+        pi_over_6 = np.pi / 6  # Using 12 sides for the dodecagon
+
+        # Generate coordinates and triangles
+        for i in range(12):
+            coords.append([np.sin(i * pi_over_6), 0, np.cos(i * pi_over_6)])
+            if i < 10:  # Adjusted to create triangles for a dodecagon
+                triangles.append([0, i + 1, i + 2])
+
+        # Transform the coordinates and create texture coordinates
+        self.positions = np.array(coords) * w
+        self.texcoords = np.array(coords)[:,:2]*0.5 + 0.5
+
+        # Assign values to mesh properties
+        self.triangles = triangles
+        self.materials = [m]
+
+class SkyscraperFloor(bk.Mesh):
+    def __new__(cls, *args, **kwargs):
+        return super().__new__(cls)
+
+    def __init__(self, w, h, m=material_basic_floor):
+        super().__init__()
+        self.w = w
+        self.h = h
+        self.name = "OfficeFloormesh"
+        # self.materials = materials
+        self.positions = [[-0.5*w, 0, -0.25*np.sqrt(3)*w],
+                          [0, 0, 0.25*np.sqrt(3)*w],
+                          [0.5*w, 0, -0.25*np.sqrt(3)*w]
+        ]
+        self.texcoords = [[0,0],
+                          [0.5,0.5*np.sqrt(3)],
+                          [1,0]
+            ]
+        self.triangles = [[0,1,2]
+            ]
+        self.materials = [m]
