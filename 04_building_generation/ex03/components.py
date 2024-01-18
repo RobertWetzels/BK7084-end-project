@@ -187,7 +187,7 @@ class OfficeWall1(bk.Mesh):             # office wall
             [w / 6, h / 6, 0],
             [-w / 6, h / 6, 0],
         ]
-        self.texcoords = [[0, 0], [1, 0], [1, 1/2], [0, 1/2]]
+        self.texcoords = [[0, 0], [1, 0], [1, 1], [0, 1]]
         self.triangles = [[0, 1, 2], [0, 2, 3]]
         self.materials = [m]
 
