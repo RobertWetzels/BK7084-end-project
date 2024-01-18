@@ -191,7 +191,7 @@ class Office:
             floor1 = app.add_mesh(OfficeFloor(max_width, max_width, material_basic_floor), parent=self.building)
             floor1.set_transform(Mat4.from_translation(Vec3(0, 3*i, 0)) * Mat4.from_rotation_y(90 * i, True))
             floor1.set_visible(True)
-            floor2 = app.add_mesh(OfficeFloor(max_width, max_width, material_basic_ground), parent=floor1)
+            floor2 = app.add_mesh(OfficeFloor(max_width, max_width, material_gold), parent=floor1)
             floor2.set_transform(Mat4.from_translation(Vec3(0, 3, 0)))
             floor2.set_visible(True)
 

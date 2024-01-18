@@ -67,6 +67,14 @@ material_windowwalls.textures = {
     #"shininess_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/structures/Facade009_2K-PNG_Metalness.png.png")
 }
 
+material_gold = bk.Material()
+material_gold.textures = {
+    "diffuse_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/03_textures/assets/Foil002_2K-PNG/Foil002_2K-PNG_Color.png"),
+    "normal_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/03_textures/assets/Foil002_2K-PNG/Foil002_2K-PNG_NormalDX.png"),  
+    "specular_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/03_textures/assets/Foil002_2K-PNG/Foil002_2K-PNG_Roughness.png"), 
+    "shininess_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/03_textures/assets/Foil002_2K-PNG/Foil002_2K-PNG_Displacement.png")
+}
+
 class BasicWall(bk.Mesh):
     """
     Create a basic wall mesh with the given size and material.
