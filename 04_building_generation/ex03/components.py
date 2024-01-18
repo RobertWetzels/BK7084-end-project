@@ -75,7 +75,7 @@ material_gold.textures = {
     "shininess_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/03_textures/assets/Foil002_2K-PNG/Foil002_2K-PNG_Displacement.png")
 }
 
-class BasicWall(bk.Mesh):
+class BasicWall(bk.Mesh):               # basic wall
     """
     Create a basic wall mesh with the given size and material.
     This class is a subclass of bk.Mesh, so it can be used as a mesh. For example,
@@ -101,7 +101,7 @@ class BasicWall(bk.Mesh):
         self.triangles = [[0, 1, 2], [0, 2, 3]]
         self.materials = [m]
 
-class BasicFloor(bk.Mesh):
+class BasicFloor(bk.Mesh):              # basic floor
     def __new__(cls, *args, **kwargs):
         return super().__new__(cls)
 
@@ -121,7 +121,7 @@ class BasicFloor(bk.Mesh):
         self.triangles = [[0, 2, 1], [0, 3, 2]]
         self.materials = [m]
 
-class OfficeFloor(bk.Mesh):
+class OfficeFloor(bk.Mesh):             # office floor
     def __new__(cls, *args, **kwargs):
         return super().__new__(cls)
 
@@ -165,7 +165,7 @@ class OfficeFloor(bk.Mesh):
             ]
         self.materials = [m]
 
-class OfficeWall1(bk.Mesh):
+class OfficeWall1(bk.Mesh):             # office wall
     """
     Create a basic wall mesh with the given size and material.
     This class is a subclass of bk.Mesh, so it can be used as a mesh. For example,
@@ -191,7 +191,7 @@ class OfficeWall1(bk.Mesh):
         self.triangles = [[0, 1, 2], [0, 2, 3]]
         self.materials = [m]
 
-class BasicWindowWall(bk.Mesh):
+class BasicWindowWall(bk.Mesh):         # basic window wall
     def __new__(cls, *args, **kwargs):
         return super().__new__(cls)
 
@@ -199,7 +199,7 @@ class BasicWindowWall(bk.Mesh):
         super().__init__()
         self.w = w
         self.h = h
-        self.name = "BasicWindowWallMesh"
+        self.name = f"BasicWindowWallMesh{w}{h}"
         # self.materials = materials
         self.positions = [
             [-w/2, -h/2, 0.0], [w/2, -h/2, 0.0], [w/2, h/2, 0.0], [-w/2, h/2, 0.0],
@@ -224,7 +224,7 @@ class BasicWindowWall(bk.Mesh):
             bk.SubMesh(8, 10, 1),
         ]
 
-class HighriseFloor(bk.Mesh):
+class HighriseFloor(bk.Mesh):           # highrise floor
     def __new__(cls, *args, **kwargs):
         return super().__new__(cls)
 
@@ -251,14 +251,7 @@ class HighriseFloor(bk.Mesh):
         self.triangles = triangles
         self.materials = [m]
         
-class OfficeWall2(bk.Mesh):
-    """
-    Create a basic wall mesh with the given size and material.
-    This class is a subclass of bk.Mesh, so it can be used as a mesh. For example,
-    you can create a mesh instance by `mesh = BasicWallMesh(...)`, and then add it to
-    a scene by `app.add_mesh(mesh)`. It's the same as using `mesh = create_basic_wall(...)`.
-    """
-
+class OfficeWall2(bk.Mesh):             # actually highrise wall
     def __new__(cls, *args, **kwargs):
         return super().__new__(cls)
 
@@ -282,19 +275,19 @@ class OfficeWall2(bk.Mesh):
         self.triangles = [[0, 1, 2], [0, 2, 3]]
         self.materials = [material_windowwalls]
 
-class SkyscraperFloor(bk.Mesh):
+class SkyscraperFloor(bk.Mesh):         # skyscraper floor
     def __new__(cls, *args, **kwargs):
         return super().__new__(cls)
 
-    def __init__(self, w, h, m=material_basic_floor):
+    def __init__(self, w, h, m):
         super().__init__()
         self.w = w
         self.h = h
-        self.name = "SkyscraperFloormesh"
+        self.name = f"SkyscraperFloormesh{w}{h}{m}"
         # self.materials = materials
-        self.positions = [[-0.5*w, 0, -0.25*np.sqrt(3)*w],
-                          [0, 0, 0.25*np.sqrt(3)*w],
-                          [0.5*w, 0, -0.25*np.sqrt(3)*w]
+        self.positions = [[-w/2, 0, -0.5*np.tan(np.pi/6)*w],
+                          [0, 0, (0.5*np.sqrt(3)-0.5*np.tan(np.pi/6))*w],
+                          [0.5*w, 0, -0.5*np.tan(np.pi/6)*w]
         ]
         self.texcoords = [[0,0],
                           [0.5,0.5*np.sqrt(3)],
@@ -304,7 +297,7 @@ class SkyscraperFloor(bk.Mesh):
             ]
         self.materials = [m]
 
-class DoorWall(bk.Mesh):
+class DoorWall(bk.Mesh):                # Doorwall of office
     def __new__(cls, *args, **kwargs):
         return super().__new__(cls)
 
