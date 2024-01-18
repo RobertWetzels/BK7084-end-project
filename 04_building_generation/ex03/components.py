@@ -101,7 +101,6 @@ class BasicWall(bk.Mesh):
         self.triangles = [[0, 1, 2], [0, 2, 3]]
         self.materials = [m]
 
-
 class BasicFloor(bk.Mesh):
     def __new__(cls, *args, **kwargs):
         return super().__new__(cls)
@@ -234,8 +233,6 @@ class HighriseFloor(bk.Mesh):
         self.w = w
         self.h = h
         self.name = f"HighriseFloormesh{w}{h}{m}"
-        # self.materials = materials
-        self.materials = [m] 
         coords = []
         triangles = []
         pi_over_6 = np.pi / 6  # Using 12 sides for the dodecagon
@@ -248,7 +245,7 @@ class HighriseFloor(bk.Mesh):
 
         # Transform the coordinates and create texture coordinates
         self.positions = np.array(coords) * w
-        self.texcoords = np.array(coords)[:,:2]*0.5 + 0.5
+        self.texcoords = np.array(coords)[:,[0,2]]*0.5
 
         # Assign values to mesh properties
         self.triangles = triangles
