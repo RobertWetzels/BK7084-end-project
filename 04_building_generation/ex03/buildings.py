@@ -107,7 +107,37 @@ class Highrise:
             floor2 = app.add_mesh(HighriseFloor(max_width, max_width), parent=floor1)
             floor2.set_transform(Mat4.from_translation(Vec3(0, 3, 0)))
             floor2.set_visible(True)
-        
+
+            side = 2 * np.sin(np.pi / 12) * max_width
+            angle = []
+            wall_angle = []
+            x_position = []
+            z_position = []
+            for n in range(12):
+                phi = np.pi / 12 + n * np.pi / 6
+                while -np.pi < phi < np.pi:
+                    if phi < -np.pi:
+                        phi = phi + 2 * np.pi
+                    else:
+                        phi = phi - 2 * np.pi
+                
+                angle.append(phi)
+                wall_angle.append(np.degrees(phi))
+                wall_distance = np.sqrt(max_width**2 - (side/2)**2)
+
+                # Calculate the position of the wall
+                x_position.append(np.sin(phi) * wall_distance)
+                z_position.append(np.cos(phi) * wall_distance)
+                y_position = max_width/2
+
+            # Create and position the wall
+            wall0 = app.add_mesh(OfficeWall2(side, max_width), parent=floor1)
+            wall0.set_transform(Mat4.from_translation(Vec3(x_position[0], y_position, z_position[0])) * Mat4.from_rotation_y(wall_angle[0], True))
+            wall0.set_visible(True)
+
+            wall1 = app.add_mesh(OfficeWall2(side, max_width), parent=floor1)
+            wall1.set_transform(Mat4.from_translation(Vec3(x_position[1], y_position, z_position[1])) * Mat4.from_rotation_y(wall_angle[1], True))
+            wall1.set_visible(True)
 
 
 class Office:
