@@ -75,6 +75,11 @@ material_gold.textures = {
     "shininess_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/03_textures/assets/Foil002_2K-PNG/Foil002_2K-PNG_Displacement.png")
 }
 
+Foto_dak = bk.Material()
+Foto_dak.textures = {
+    "diffuse_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/03_textures/assets/foto dak .jpg")
+}
+
 class BasicWall(bk.Mesh):               # basic wall
     """
     Create a basic wall mesh with the given size and material.

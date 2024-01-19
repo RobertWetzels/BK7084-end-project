@@ -48,7 +48,7 @@ class Skyscraper:
             floor1 = app.add_mesh(SkyscraperFloor(max_width, max_width, material_basic_floor), parent=self.building)
             floor1.set_transform(Mat4.from_translation(Vec3(0, max_width * i, 0)))
             floor1.set_visible(True)
-            floor2 = app.add_mesh(SkyscraperFloor(max_width, max_width, material_gold), parent=floor1)
+            floor2 = app.add_mesh(SkyscraperFloor(max_width, max_width, Foto_dak), parent=floor1)
             floor2.set_transform(Mat4.from_translation(Vec3(0, max_width, 0)))
             floor2.set_visible(True)
 
