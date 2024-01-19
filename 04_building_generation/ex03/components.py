@@ -63,13 +63,13 @@ material_windowwalls = bk.Material()
 material_windowwalls.textures = {
     "diffuse_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/structures/Facade009_2K-PNG_Color.png"),
     #"normal_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/structures/Facade009_2K-PNG_NormalDX.png"),  
-    #"specular_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/structures/Facade009_2K-PNG_Roughness.png.png"), 
-    #"shininess_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/structures/Facade009_2K-PNG_Metalness.png.png")
+    "specular_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/structures/Facade009_2K-PNG_Roughness.png"), 
+    "shininess_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/structures/Facade009_2K-PNG_Metalness.png")
 }
 
 material_gold = bk.Material()
 material_gold.textures = {
-    "diffuse_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/03_textures/assets/Foil002_2K-PNG/Foil002_2K-PNG_Color.png"),
+    "diffuse_texture": bk.res_path("../../03_textures/assets/Foil002_2K-PNG/Foil002_2K-PNG_Color.png"),
     "normal_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/03_textures/assets/Foil002_2K-PNG/Foil002_2K-PNG_NormalDX.png"),  
     "specular_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/03_textures/assets/Foil002_2K-PNG/Foil002_2K-PNG_Roughness.png"), 
     "shininess_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/03_textures/assets/Foil002_2K-PNG/Foil002_2K-PNG_Displacement.png")
@@ -318,7 +318,7 @@ class DoorWall(bk.Mesh):                # Doorwall of office
         super().__init__()
         self.w = w
         self.h = h
-        self.name = "DoorWallMesh"
+        self.name = f"DoorWallMesh{w}{h}"
         # self.materials = materials
         self.positions = [
             [-w/2, -h/2, 0.0], [w/2, -h/2, 0.0], [w/2, h/2, 0.0], [-w/2, h/2, 0.0],
@@ -328,7 +328,7 @@ class DoorWall(bk.Mesh):                # Doorwall of office
         self.texcoords = [
             [0.0, 0.0], [1.0, 0.0], [1.0, 1.0], [0, 1.0],
             [3/10, 0], [7/10, 0], [7/10, 7/10], [3/10, 7/10],
-            [1, 1], [0, 1], [0, 0], [1, 0]
+            [0, 0], [1, 0], [1, 1], [0, 1]
         ]
         self.triangles = [
             [0, 7, 3], [0, 4, 7], [7, 2, 3], [6, 2, 7], [2, 6, 5], [5, 1, 2],

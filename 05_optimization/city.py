@@ -180,9 +180,21 @@ class City:
         # TODO: Randomize the city grid in a smart way.
         for row in range(self._plots_per_row):
             for col in range(self._plots_per_col):
+                give_type_int = randint(0,99)
+                if give_type_int <= 4:
+                    building_type = BuildingType(4)
+                elif 4 < give_type_int <= 12:
+                    building_type = BuildingType(3)
+                elif 12 < give_type_int <= 27:
+                    building_type = BuildingType(5)
+                elif 27 < give_type_int <= 52:
+                    building_type = BuildingType(2)
+                elif 52 < give_type_int <= 89:
+                    building_type = BuildingType(1)
+                else:
+                    building_type = BuildingType(0)
                 # Generate a random number between 0 and 5 (inclusive)
                 # and set the plot type accordingly
-                building_type = BuildingType(randint(0, 5))
                 self.construct_building(row, col, building_type)
 
     def clear_grid(self):
@@ -218,16 +230,16 @@ class City:
             building = House(self._app)
         elif building_type is BuildingType.OFFICE:
             # TODO: replace the following line with your own code to create an office
-            num_floors = randint(3, 8)
-            building = Office(self._app, num_floors, 3)
+            num_floors = randint(3, 9)
+            building = Office(self._app, num_floors, 6)
         elif building_type is BuildingType.HIGHRISE:
             # TODO: replace the following line with your own code to create a highrise
-            building = Skyscraper(
-                self._app, 5, 3
+            building = Highrise(
+                self._app, 7, 6
             )
         elif building_type is BuildingType.SKYSCRAPER:
             # TODO: replace the following line with your own code to create a skyscraper
-            building = Skyscraper(self._app, 8, 3)
+            building = Skyscraper(self._app, 8, 4)
         elif building_type is BuildingType.PARK:
             building = Park(self._app)
 
