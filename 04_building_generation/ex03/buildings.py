@@ -48,11 +48,11 @@ class Skyscraper:
             floor1 = app.add_mesh(SkyscraperFloor(max_width, max_width, material_basic_floor), parent=self.building)
             floor1.set_transform(Mat4.from_translation(Vec3(0, max_width * i, 0)))
             floor1.set_visible(True)
-            floor2 = app.add_mesh(SkyscraperFloor(max_width, max_width, Foto_dak), parent=floor1)
+            floor2 = app.add_mesh(SkyscraperFloor(max_width, max_width, material_basic_ground), parent=floor1)
             floor2.set_transform(Mat4.from_translation(Vec3(0, max_width, 0)))
             floor2.set_visible(True)
 
-            wall1 = app.add_mesh(OfficeWall2(max_width, max_width), parent=floor1)
+            wall1 = app.add_mesh(OfficeWall2(max_width, max_width, lego), parent=floor1)
             wall1.set_transform(Mat4.from_rotation_y(60, True) * Mat4.from_translation(Vec3(0, max_width/2, 0.5*max_width*np.tan(np.pi/6))))
             wall1.set_visible(True)
             wall2 = app.add_mesh(BasicWindowWall(max_width, max_width), parent=floor1)
@@ -89,7 +89,7 @@ class Highrise:
             floor1 = app.add_mesh(HighriseFloor(max_width, max_width, material_basic_floor), parent=self.building)
             floor1.set_transform(Mat4.from_translation(Vec3(0, max_width*i, 0)) * Mat4.from_rotation_y(90 * i, True))
             floor1.set_visible(True)
-            floor2 = app.add_mesh(HighriseFloor(max_width, max_width, material_basic_ground), parent=floor1)
+            floor2 = app.add_mesh(HighriseFloor(max_width, max_width, Foto_dak), parent=floor1)
             floor2.set_transform(Mat4.from_translation(Vec3(0, max_width, 0)))
             floor2.set_visible(True)
 

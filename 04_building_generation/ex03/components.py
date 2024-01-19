@@ -77,7 +77,15 @@ material_gold.textures = {
 
 Foto_dak = bk.Material()
 Foto_dak.textures = {
-    "diffuse_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/03_textures/assets/foto dak .jpg")
+    "diffuse_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/03_textures/assets/fotodak2.jpg")
+}
+
+lego = bk.Material()
+lego.textures = {
+    "diffuse_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/03_textures/assets/TactilePaving002_2K-PNG/TactilePaving002_2K-PNG_Color.png"),
+    "normal_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/03_textures/assets/TactilePaving002_2K-PNG/TactilePaving002_2K-PNG_NormalDX.png"),  
+    "specular_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/03_textures/assets/TactilePaving002_2K-PNG/TactilePaving002_2K-PNG_Roughness.png"), 
+    "shininess_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/03_textures/assets/TactilePaving002_2K-PNG/TactilePaving002_2K-PNG_Displacement.png")
 }
 
 class BasicWall(bk.Mesh):               # basic wall
@@ -250,7 +258,7 @@ class HighriseFloor(bk.Mesh):           # highrise floor
 
         # Transform the coordinates and create texture coordinates
         self.positions = np.array(coords) * w
-        self.texcoords = np.array(coords)[:,[0,2]]*0.5
+        self.texcoords = np.array(coords)[:,[0,2]]*0.5+0.5
 
         # Assign values to mesh properties
         self.triangles = triangles
@@ -260,11 +268,11 @@ class OfficeWall2(bk.Mesh):             # actually highrise wall
     def __new__(cls, *args, **kwargs):
         return super().__new__(cls)
 
-    def __init__(self, w, h):
+    def __init__(self, w, h, m=material_windowwalls):
         super().__init__()
         self.w = w
         self.h = h
-        self.name = f"OfficeWall2Mesh{w}{h}"
+        self.name = f"OfficeWall2Mesh{w}{h}{m}"
         self.positions = [
             [-w / 2, -h / 2, 0],
             [w / 2, -h / 2, 0],
@@ -278,7 +286,7 @@ class OfficeWall2(bk.Mesh):             # actually highrise wall
         else:
             self.texcoords = [[0, 0], [w/h, 0], [w/h, 1], [0, 1]]
         self.triangles = [[0, 1, 2], [0, 2, 3]]
-        self.materials = [material_windowwalls]
+        self.materials = [m]
 
 class SkyscraperFloor(bk.Mesh):         # skyscraper floor
     def __new__(cls, *args, **kwargs):
