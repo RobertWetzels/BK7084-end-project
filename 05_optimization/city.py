@@ -186,16 +186,15 @@ class City:
                 elif 4 < give_type_int <= 12:
                     building_type = BuildingType(3)
                 elif 12 < give_type_int <= 27:
-                    building_type = BuildingType(5)
+                    building_type = BuildingType.PARK
                 elif 27 < give_type_int <= 52:
                     building_type = BuildingType(2)
                 elif 52 < give_type_int <= 89:
                     building_type = BuildingType(1)
                 else:
                     building_type = BuildingType(0)
-                # Generate a random number between 0 and 5 (inclusive)
-                # and set the plot type accordingly
                 self.construct_building(row, col, building_type)
+        self.get_buliding_numbers()
 
     def clear_grid(self):
         """Clears the city grid.
@@ -244,6 +243,17 @@ class City:
             building = Park(self._app)
 
         self._plots[row * self._plots_per_col + col] = building
+
+    def get_buliding_numbers(self):
+        numbers = [0] * 6
+        for plot in self._plots:
+            if plot is None:
+                numbers[BuildingType.EMPTY.value] += 1
+            else:
+                numbers[plot.type.value] += 1
+        inv_total = 1 / (self._plots_per_col * self._plots_per_row)
+        for i in range(0, 6):
+            print(f"{BuildingType(i)}: {numbers[i] * inv_total * 100:.2f}%")
 
     def get_building(self, row: int, col: int):
         """Returns the building at the given row and column.
