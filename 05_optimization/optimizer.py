@@ -14,14 +14,18 @@ class Optimizer:
                 Whether to print information about the optimization step.
         """
         #######
+        # makes a list of all the plot types
         type = []
-        for i in range (City._plots_per_col):
-            for w in range (City._plots_per_row):
-                plot_num = i*City._plots_per_row + w
-                type[plot_num] = City.get_building_type(w, i)
-                print(type[i])
+        for i in range (self._city._plots_per_col):
+            for w in range (self._city._plots_per_row):
+                type.append(self._city.get_building_type(w, i))     # returns type as 2 letter value, e.q. HS or SK
         
-
+        # determine score per plot
+        # for i in range (len(type)):
+        #     if type[i] == "HS":
+        #         determine score[i] folling set of rules for house
+        #     if type[i] == "SK":
+        #         determine score[i] folling set of rules for house
 
 
         #######

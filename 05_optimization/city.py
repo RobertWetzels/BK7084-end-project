@@ -289,7 +289,7 @@ class City:
         for i in range(0, 6):
             print(f"{BuildingType(i)}: {numbers[i] * inv_total * 100:.2f}%")
 
-    def get_building(self, row: int, col: int):         # returns for example "Skyscraper" or "none" if plot is empty
+    def get_building(self, row: int, col: int):         # returns for example "Buildings.Skyscraper" or "None" if plot is empty
         """Returns the building at the given row and column.
         Args:
             row (int):
@@ -311,7 +311,7 @@ class City:
         """
         self._plots[row * self._plots_per_col + col] = building
 
-    def get_building_type(self, row: int, col: int) -> BuildingType:    # returns for example "SKYSCRAPER"
+    def get_building_type(self, row: int, col: int) -> BuildingType:    # returns type as 2 letter value, e.q. HS or SK
         """Returns the type of the building at the given row and column.
         Args:
             row (int):
