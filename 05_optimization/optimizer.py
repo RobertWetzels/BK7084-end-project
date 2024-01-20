@@ -26,7 +26,10 @@ class Optimizer:
         #         determine score[i] folling set of rules for house
         #     if type[i] == "SK":
         #         determine score[i] folling set of rules for house
-
+                #
+                #
+                #
+                #
 
         #######
         # TODO: Implement your optimization algorithm here.
