@@ -178,12 +178,55 @@ class City:
         - the remaining plots can be whatever you want
         """
         # TODO: Randomize the city grid in a smart way.
+        # determine intital location of the grid allowed for highrises and skyscrapers
+        highgrid_row = np.random.randint(0,2)           # 0 or 1
+        highgrid_col = np.random.randint(0,2)           # 0 or 1
+
+        # determine randomly, chance based, what building will be on what plot
+        #for highgrid
         for row in range(self._plots_per_row):
             for col in range(self._plots_per_col):
-                # Generate a random number between 0 and 5 (inclusive)
-                # and set the plot type accordingly
-                building_type = BuildingType(randint(0, 5))
+                give_type_int = np.random.rand()        # get random value between 0 and 1
+                if (row+highgrid_row)%2 == 0 and (col+highgrid_col)%2 == 0:           # plots where skyscrapers and highrises are allowed
+                    if give_type_int <= 0.05/0.25:
+                        building_type = BuildingType.SKYSCRAPER
+                    elif 0.05/0.25 < give_type_int < 13/25:         # + 0.08/0.25
+                        building_type = BuildingType.HIGHRISE
+                    elif 13/25 < give_type_int <= 477/725:        # + 0.25/87 * 48
+                        building_type = BuildingType.OFFICE
+                    elif 477/725 < give_type_int <= 25/29:       # + 0.37/87 * 48
+                        building_type = BuildingType.HOUSE
+                    elif 25/29 < give_type_int <= 137/145:    # + 0.15/87 * 48
+                        building_type = BuildingType.PARK
+                    else:
+                        building_type = BuildingType.EMPTY
+                else:       # for not-high grid
+                    if 0 < give_type_int <= 25/87 :
+                        building_type = BuildingType.OFFICE
+                    elif 25/87 < give_type_int <= 62/87:       # + 0.37/87 *100
+                        building_type = BuildingType.HOUSE
+                    elif 62/87 < give_type_int <= 77/87:        # + 0.15/87 * 100
+                        building_type = BuildingType.PARK
+                    else:
+                        building_type = BuildingType.EMPTY
+                
+                #initial code. without accounting for high buildings next to eachother
+                #give_type_int = np.random.randint(0,99)
+
+                # if give_type_int <= 4:
+                #     building_type = BuildingType.SKYSCRAPER
+                # elif 4 < give_type_int <= 12:
+                #     building_type = BuildingType.HIGHRISE
+                # elif 12 < give_type_int <= 27:
+                #     building_type = BuildingType.PARK
+                # elif 27 < give_type_int <= 52:
+                #     building_type = BuildingType.OFFICE
+                # elif 52 < give_type_int <= 89:
+                #     building_type = BuildingType.HOUSE
+                # else:
+                #     building_type = BuildingType.EMPTY
                 self.construct_building(row, col, building_type)
+        self.get_buliding_numbers()
 
     def clear_grid(self):
         """Clears the city grid.
@@ -218,22 +261,35 @@ class City:
             building = House(self._app)
         elif building_type is BuildingType.OFFICE:
             # TODO: replace the following line with your own code to create an office
-            num_floors = randint(3, 8)
-            building = Office(self._app, num_floors, 3)
+            num_floors = randint(4, 8)
+            building = Office(self._app, num_floors, 6)
         elif building_type is BuildingType.HIGHRISE:
             # TODO: replace the following line with your own code to create a highrise
-            building = Skyscraper(
-                self._app, 5, 3
+            num_floors1 = randint(6, 8)
+            building = Highrise(
+                self._app, num_floors1, 6
             )
         elif building_type is BuildingType.SKYSCRAPER:
             # TODO: replace the following line with your own code to create a skyscraper
-            building = Skyscraper(self._app, 8, 3)
+            num_floors2 = randint(8, 10)
+            building = Skyscraper(self._app, num_floors2, 4)
         elif building_type is BuildingType.PARK:
             building = Park(self._app)
 
         self._plots[row * self._plots_per_col + col] = building
 
-    def get_building(self, row: int, col: int):
+    def get_buliding_numbers(self):
+        numbers = [0] * 6
+        for plot in self._plots:
+            if plot is None:
+                numbers[BuildingType.EMPTY.value] += 1
+            else:
+                numbers[plot.type.value] += 1
+        inv_total = 1 / (self._plots_per_col * self._plots_per_row)
+        for i in range(0, 6):
+            print(f"{BuildingType(i)}: {numbers[i] * inv_total * 100:.2f}%")
+
+    def get_building(self, row: int, col: int):         # returns for example "Buildings.Skyscraper" or "None" if plot is empty
         """Returns the building at the given row and column.
         Args:
             row (int):
@@ -255,7 +311,7 @@ class City:
         """
         self._plots[row * self._plots_per_col + col] = building
 
-    def get_building_type(self, row: int, col: int) -> BuildingType:
+    def get_building_type(self, row: int, col: int) -> BuildingType:    # returns type as 2 letter value, e.q. HS or SK
         """Returns the type of the building at the given row and column.
         Args:
             row (int):

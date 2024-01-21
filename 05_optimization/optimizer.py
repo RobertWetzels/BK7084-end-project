@@ -1,4 +1,5 @@
 from random import randint
+from city import City
 
 
 class Optimizer:
@@ -12,11 +13,30 @@ class Optimizer:
             print_info (bool):
                 Whether to print information about the optimization step.
         """
+        #######
+        # makes a list of all the plot types
+        type = []
+        for i in range (self._city._plots_per_col):
+            for w in range (self._city._plots_per_row):
+                type.append(self._city.get_building_type(w, i))     # returns type as 2 letter value, e.q. HS or SK
+        
+        # determine score per plot
+        # for i in range (len(type)):
+        #     if type[i] == "HS":
+        #         determine score[i] folling set of rules for house
+        #     if type[i] == "SK":
+        #         determine score[i] folling set of rules for house
+                #
+                #
+                #
+                #
+
+        #######
         # TODO: Implement your optimization algorithm here.
         #  Hint: You can use the following code to swap two buildings:
-        row1, col1 = randint(0, self._city._plots_per_row - 1), randint(0, self._city._plots_per_col - 1)
-        row2, col2 = randint(0, self._city._plots_per_row - 1), randint(0, self._city._plots_per_col - 1)
-        self._city.swap_buildings(row1, col1, row2, col2)
+        # row1, col1 = randint(0, self._city._plots_per_row - 1), randint(0, self._city._plots_per_col - 1)
+        # row2, col2 = randint(0, self._city._plots_per_row - 1), randint(0, self._city._plots_per_col - 1)
+        # self._city.swap_buildings(row1, col1, row2, col2)
         #  Hint: You can use the function `compute_sunlight_scores` of the City class
         #  to compute the sunlight scores
         new_scores = self._city.compute_sunlight_scores()
