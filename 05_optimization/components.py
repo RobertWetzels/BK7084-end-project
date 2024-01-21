@@ -47,10 +47,10 @@ material_mosaic_tiles.textures = {
 
 mat_office_delfts = bk.Material()
 mat_office_delfts.textures = {
-   "diffuse_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/05_optimization/assets/Tiles101_2K-PNG/Tiles101_2K-PNG_Color.png"),
-    #"normal_texture": bk.res_path("../05_optimization/assets\Tiles101_2K-PNG\Tiles101_2K-PNG_NormalGL.png"),  
-    #"specular_texture": bk.res_path("../05_optimization/assets\Tiles101_2K-PNG\Tiles101_2K-PNG_Displacement.png"), 
-    #"shininess_texture": bk.res_path("../05_optimization/assets\Tiles101_2K-PNG\Tiles101_2K-PNG_AmbientOcclusion.png")
+   "diffuse_texture": bk.res_path("C:../05_optimization/assets/Tiles101_2K-PNG/Tiles101_2K-PNG_Color.png"),
+    #"normal_texture": bk.res_path("../05_optimization/assets/Tiles101_2K-PNG/Tiles101_2K-PNG_NormalGL.png"),  
+    #"specular_texture": bk.res_path("../05_optimization/assets/Tiles101_2K-PNG/Tiles101_2K-PNG_Displacement.png"), 
+    #"shininess_texture": bk.res_path("../05_optimization/assets\Tiles101_2K-PNG/Tiles101_2K-PNG_AmbientOcclusion.png")
 }
 material_mosaic_tiles = bk.Material()
 material_mosaic_tiles.textures = {
@@ -61,31 +61,31 @@ material_mosaic_tiles.textures = {
 }
 material_windowwalls = bk.Material()
 material_windowwalls.textures = {
-    "diffuse_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/structures/Facade009_2K-PNG_Color.png"),
-    #"normal_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/structures/Facade009_2K-PNG_NormalDX.png"),  
-    "specular_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/structures/Facade009_2K-PNG_Roughness.png"), 
-    "shininess_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/structures/Facade009_2K-PNG_Metalness.png")
+    "diffuse_texture": bk.res_path("../structures/Facade009_2K-PNG_Color.png"),
+    #"normal_texture": bk.res_path("../structures/Facade009_2K-PNG_NormalDX.png"),  
+    "specular_texture": bk.res_path("../structures/Facade009_2K-PNG_Roughness.png"), 
+    "shininess_texture": bk.res_path("../structures/Facade009_2K-PNG_Metalness.png")
 }
 
 material_gold = bk.Material()
 material_gold.textures = {
     "diffuse_texture": bk.res_path("../03_textures/assets/Foil002_2K-PNG/Foil002_2K-PNG_Color.png"),
-    "normal_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/03_textures/assets/Foil002_2K-PNG/Foil002_2K-PNG_NormalDX.png"),  
-    "specular_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/03_textures/assets/Foil002_2K-PNG/Foil002_2K-PNG_Roughness.png"), 
-    "shininess_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/03_textures/assets/Foil002_2K-PNG/Foil002_2K-PNG_Displacement.png")
+    "normal_texture": bk.res_path("../03_textures/assets/Foil002_2K-PNG/Foil002_2K-PNG_NormalDX.png"),  
+    "specular_texture": bk.res_path("../03_textures/assets/Foil002_2K-PNG/Foil002_2K-PNG_Roughness.png"), 
+    "shininess_texture": bk.res_path("../03_textures/assets/Foil002_2K-PNG/Foil002_2K-PNG_Displacement.png")
 }
 
 Foto_dak = bk.Material()
 Foto_dak.textures = {
-    "diffuse_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/03_textures/assets/fotodak2.jpg")
+    "diffuse_texture": bk.res_path("../03_textures/assets/fotodak2.jpg")
 }
 
 lego = bk.Material()
 lego.textures = {
-    "diffuse_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/03_textures/assets/TactilePaving002_2K-PNG/TactilePaving002_2K-PNG_Color.png"),
-    "normal_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/03_textures/assets/TactilePaving002_2K-PNG/TactilePaving002_2K-PNG_NormalDX.png"),  
-    "specular_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/03_textures/assets/TactilePaving002_2K-PNG/TactilePaving002_2K-PNG_Roughness.png"), 
-    "shininess_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/03_textures/assets/TactilePaving002_2K-PNG/TactilePaving002_2K-PNG_Displacement.png")
+    "diffuse_texture": bk.res_path("../03_textures/assets/TactilePaving002_2K-PNG/TactilePaving002_2K-PNG_Color.png"),
+    "normal_texture": bk.res_path("../03_textures/assets/TactilePaving002_2K-PNG/TactilePaving002_2K-PNG_NormalDX.png"),  
+    "specular_texture": bk.res_path("../03_textures/assets/TactilePaving002_2K-PNG/TactilePaving002_2K-PNG_Roughness.png"), 
+    "shininess_texture": bk.res_path("../03_textures/assets/TactilePaving002_2K-PNG/TactilePaving002_2K-PNG_Displacement.png")
 }
 
 class BasicWall(bk.Mesh):               # basic wall
@@ -288,7 +288,7 @@ class OfficeWall2(bk.Mesh):             # actually highrise wall
         self.triangles = [[0, 1, 2], [0, 2, 3]]
         self.materials = [m]
 
-class SkyscraperFloor(bk.Mesh):         # skyscraper floor
+class SkyscraperFloor(bk.Mesh):         # making the skyscraper floor
     def __new__(cls, *args, **kwargs):
         return super().__new__(cls)
 
