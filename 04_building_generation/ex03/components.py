@@ -63,32 +63,24 @@ material_windowwalls = bk.Material()
 material_windowwalls.textures = {
     "diffuse_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/structures/Facade009_2K-PNG_Color.png"),
     #"normal_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/structures/Facade009_2K-PNG_NormalDX.png"),  
-    "specular_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/structures/Facade009_2K-PNG_Roughness.png"), 
-    "shininess_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/structures/Facade009_2K-PNG_Metalness.png")
+    #"specular_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/structures/Facade009_2K-PNG_Roughness.png.png"), 
+    #"shininess_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/structures/Facade009_2K-PNG_Metalness.png.png")
 }
 
 material_gold = bk.Material()
 material_gold.textures = {
-    "diffuse_texture": bk.res_path("../../03_textures/assets/Foil002_2K-PNG/Foil002_2K-PNG_Color.png"),
+    "diffuse_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/03_textures/assets/Foil002_2K-PNG/Foil002_2K-PNG_Color.png"),
     "normal_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/03_textures/assets/Foil002_2K-PNG/Foil002_2K-PNG_NormalDX.png"),  
     "specular_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/03_textures/assets/Foil002_2K-PNG/Foil002_2K-PNG_Roughness.png"), 
     "shininess_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/03_textures/assets/Foil002_2K-PNG/Foil002_2K-PNG_Displacement.png")
 }
 
-Foto_dak = bk.Material()
-Foto_dak.textures = {
-    "diffuse_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/03_textures/assets/fotodak2.jpg")
+material_foto = bk.Material()
+material_foto.textures = {
+"diffuse_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/05_optimization/assets/foto dak .jpg")
 }
 
-lego = bk.Material()
-lego.textures = {
-    "diffuse_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/03_textures/assets/TactilePaving002_2K-PNG/TactilePaving002_2K-PNG_Color.png"),
-    "normal_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/03_textures/assets/TactilePaving002_2K-PNG/TactilePaving002_2K-PNG_NormalDX.png"),  
-    "specular_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/03_textures/assets/TactilePaving002_2K-PNG/TactilePaving002_2K-PNG_Roughness.png"), 
-    "shininess_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/03_textures/assets/TactilePaving002_2K-PNG/TactilePaving002_2K-PNG_Displacement.png")
-}
-
-class BasicWall(bk.Mesh):               # basic wall
+class BasicWall(bk.Mesh):
     """
     Create a basic wall mesh with the given size and material.
     This class is a subclass of bk.Mesh, so it can be used as a mesh. For example,
@@ -114,7 +106,8 @@ class BasicWall(bk.Mesh):               # basic wall
         self.triangles = [[0, 1, 2], [0, 2, 3]]
         self.materials = [m]
 
-class BasicFloor(bk.Mesh):              # basic floor
+
+class BasicFloor(bk.Mesh):
     def __new__(cls, *args, **kwargs):
         return super().__new__(cls)
 
@@ -134,7 +127,7 @@ class BasicFloor(bk.Mesh):              # basic floor
         self.triangles = [[0, 2, 1], [0, 3, 2]]
         self.materials = [m]
 
-class OfficeFloor(bk.Mesh):             # office floor
+class OfficeFloor(bk.Mesh):
     def __new__(cls, *args, **kwargs):
         return super().__new__(cls)
 
@@ -178,7 +171,7 @@ class OfficeFloor(bk.Mesh):             # office floor
             ]
         self.materials = [m]
 
-class OfficeWall1(bk.Mesh):             # office wall
+class OfficeWall1(bk.Mesh):
     """
     Create a basic wall mesh with the given size and material.
     This class is a subclass of bk.Mesh, so it can be used as a mesh. For example,
@@ -193,18 +186,18 @@ class OfficeWall1(bk.Mesh):             # office wall
         super().__init__()
         self.w = w
         self.h = h
-        self.name = f"BasicWallMesh{w}{h}"
+        self.name = "BasicWallMesh"
         self.positions = [
-            [-w / 6, -h / 6, 0],
-            [w / 6, -h / 6, 0],
-            [w / 6, h / 6, 0],
-            [-w / 6, h / 6, 0],
+            [-w / 3, -h / 6, 0],
+            [w / 3, -h / 6, 0],
+            [w / 3, h / 6, 0],
+            [-w / 3, h / 6, 0],
         ]
-        self.texcoords = [[0, 0], [1, 0], [1, 1], [0, 1]]
+        self.texcoords = [[0, 0], [1, 0], [1, 1/2], [0, 1/2]]
         self.triangles = [[0, 1, 2], [0, 2, 3]]
         self.materials = [m]
 
-class BasicWindowWall(bk.Mesh):         # basic window wall
+class BasicWindowWall(bk.Mesh):
     def __new__(cls, *args, **kwargs):
         return super().__new__(cls)
 
@@ -212,7 +205,7 @@ class BasicWindowWall(bk.Mesh):         # basic window wall
         super().__init__()
         self.w = w
         self.h = h
-        self.name = f"BasicWindowWallMesh{w}{h}"
+        self.name = "BasicWindowWallMesh"
         # self.materials = materials
         self.positions = [
             [-w/2, -h/2, 0.0], [w/2, -h/2, 0.0], [w/2, h/2, 0.0], [-w/2, h/2, 0.0],
@@ -237,7 +230,7 @@ class BasicWindowWall(bk.Mesh):         # basic window wall
             bk.SubMesh(8, 10, 1),
         ]
 
-class HighriseFloor(bk.Mesh):           # highrise floor
+class HighriseFloor(bk.Mesh):
     def __new__(cls, *args, **kwargs):
         return super().__new__(cls)
 
@@ -246,6 +239,8 @@ class HighriseFloor(bk.Mesh):           # highrise floor
         self.w = w
         self.h = h
         self.name = f"HighriseFloormesh{w}{h}{m}"
+        # self.materials = materials
+        self.materials = [m] 
         coords = []
         triangles = []
         pi_over_6 = np.pi / 6  # Using 12 sides for the dodecagon
@@ -258,21 +253,28 @@ class HighriseFloor(bk.Mesh):           # highrise floor
 
         # Transform the coordinates and create texture coordinates
         self.positions = np.array(coords) * w
-        self.texcoords = np.array(coords)[:,[0,2]]*0.5+0.5
+        self.texcoords = np.array(coords)[:,:2]*0.5 + 0.5
 
         # Assign values to mesh properties
         self.triangles = triangles
         self.materials = [m]
         
-class OfficeWall2(bk.Mesh):             # actually highrise wall
+class OfficeWall2(bk.Mesh):
+    """
+    Create a basic wall mesh with the given size and material.
+    This class is a subclass of bk.Mesh, so it can be used as a mesh. For example,
+    you can create a mesh instance by `mesh = BasicWallMesh(...)`, and then add it to
+    a scene by `app.add_mesh(mesh)`. It's the same as using `mesh = create_basic_wall(...)`.
+    """
+
     def __new__(cls, *args, **kwargs):
         return super().__new__(cls)
 
-    def __init__(self, w, h, m=material_windowwalls):
+    def __init__(self, w, h):
         super().__init__()
         self.w = w
         self.h = h
-        self.name = f"OfficeWall2Mesh{w}{h}{m}"
+        self.name = f"OfficeWall2Mesh{w}{h}"
         self.positions = [
             [-w / 2, -h / 2, 0],
             [w / 2, -h / 2, 0],
@@ -286,21 +288,21 @@ class OfficeWall2(bk.Mesh):             # actually highrise wall
         else:
             self.texcoords = [[0, 0], [w/h, 0], [w/h, 1], [0, 1]]
         self.triangles = [[0, 1, 2], [0, 2, 3]]
-        self.materials = [m]
+        self.materials = [material_windowwalls]
 
-class SkyscraperFloor(bk.Mesh):         # skyscraper floor
+class SkyscraperFloor(bk.Mesh):
     def __new__(cls, *args, **kwargs):
         return super().__new__(cls)
 
-    def __init__(self, w, h, m):
+    def __init__(self, w, h, m=material_basic_floor):
         super().__init__()
         self.w = w
         self.h = h
-        self.name = f"SkyscraperFloormesh{w}{h}{m}"
+        self.name = "SkyscraperFloormesh"
         # self.materials = materials
-        self.positions = [[-w/2, 0, -0.5*np.tan(np.pi/6)*w],
-                          [0, 0, (0.5*np.sqrt(3)-0.5*np.tan(np.pi/6))*w],
-                          [0.5*w, 0, -0.5*np.tan(np.pi/6)*w]
+        self.positions = [[-0.5*w, 0, -0.25*np.sqrt(3)*w],
+                          [0, 0, 0.25*np.sqrt(3)*w],
+                          [0.5*w, 0, -0.25*np.sqrt(3)*w]
         ]
         self.texcoords = [[0,0],
                           [0.5,0.5*np.sqrt(3)],
@@ -310,7 +312,7 @@ class SkyscraperFloor(bk.Mesh):         # skyscraper floor
             ]
         self.materials = [m]
 
-class DoorWall(bk.Mesh):                # Doorwall of office
+class DoorWall(bk.Mesh):
     def __new__(cls, *args, **kwargs):
         return super().__new__(cls)
 
@@ -318,7 +320,7 @@ class DoorWall(bk.Mesh):                # Doorwall of office
         super().__init__()
         self.w = w
         self.h = h
-        self.name = f"DoorWallMesh{w}{h}"
+        self.name = "DoorWallMesh"
         # self.materials = materials
         self.positions = [
             [-w/2, -h/2, 0.0], [w/2, -h/2, 0.0], [w/2, h/2, 0.0], [-w/2, h/2, 0.0],
@@ -328,7 +330,7 @@ class DoorWall(bk.Mesh):                # Doorwall of office
         self.texcoords = [
             [0.0, 0.0], [1.0, 0.0], [1.0, 1.0], [0, 1.0],
             [3/10, 0], [7/10, 0], [7/10, 7/10], [3/10, 7/10],
-            [0, 0], [1, 0], [1, 1], [0, 1]
+            [1, 1], [0, 1], [0, 0], [1, 0]
         ]
         self.triangles = [
             [0, 7, 3], [0, 4, 7], [7, 2, 3], [6, 2, 7], [2, 6, 5], [5, 1, 2],
