@@ -10,7 +10,6 @@ Exercise 05: City Optimization
 Welcome to the final project of this course! In this project, you will implement
 a city optimization algorithm that optimizes the displacement of buildings in
 a city grid to maximize the sunlight exposure of the city.
-
 Before you start, try to run this file (main.py) and see what it looks like. You
 should see a city grid with some buildings. The starting scene is quite dark, so
 you can press the J key to toggle the dynamic light where the sun rotates around

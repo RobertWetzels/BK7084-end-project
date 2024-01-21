@@ -1,0 +1,47 @@
+import random
+
+# Define grid size
+rows, cols = 3, 3
+
+# Possible colors
+colors = ["Red", "Green", "Blue", "Yellow", "Purple"]
+
+# Generate a random layout
+random_layout = [[random.choice(colors) for _ in range(cols)] for _ in range(rows)]
+
+# Define the rules
+rules = {
+    "Yellow in top row": 1,
+    "Purple in bottom row": 1,
+    "Red on the left": 1,
+    "Green on the right": 1,
+    "Blue in the middle": 1
+}
+
+def calculate_score(layout):
+    score = 0
+    
+    # Rule 1: Yellow in top row
+    score += sum(cell == "Yellow" for cell in layout[0])
+    
+    # Rule 2: Purple in bottom row
+    score += 1 if layout[rows-1][cols//2] == "Purple" else 0
+    
+    # Rule 3: Red on the left
+    score += sum(layout[i][0] == "Red" for i in range(rows))
+    
+    # Rule 4: Green on the right
+    score += sum(layout[i][cols-1] == "Green" for i in range(rows))
+    
+    # Rule 5: Blue in the middle
+    score += 1 if layout[rows//2][cols//2] == "Blue" else 0
+    
+    return score
+
+# Display the layouts and their scores
+print("Random Layout:")
+for row in random_layout:
+    print(row)
+
+random_score = calculate_score(random_layout)
+print("\nScore:", random_score)

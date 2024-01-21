@@ -1,0 +1,62 @@
+import random
+
+# Define grid size
+rows, cols = 3, 3
+
+# Possible colors
+colors = ["Red", "Green", "Blue", "Yellow", "Purple"]
+
+# Define the rules
+rules = {
+    "Yellow in top row": 1,
+    "Purple in bottom row": 1,
+    "Red on the left": 1,
+    "Green on the right": 1,
+    "Blue in the middle": 1
+}
+
+def generate_random_layout():
+    return [[random.choice(colors) for _ in range(cols)] for _ in range(rows)]
+
+def calculate_score(layout):
+    score = 0
+    score += sum(cell == "Yellow" for cell in layout[0])
+    score += 1 if layout[rows-1][cols//2] == "Purple" else 0
+    score += sum(layout[i][0] == "Red" for i in range(rows))
+    score += sum(layout[i][cols-1] == "Green" for i in range(rows))
+    score += 1 if layout[rows//2][cols//2] == "Blue" else 0
+    return score
+
+def optimize_layout(initial_layout, max_iterations=1000):
+    current_layout = initial_layout
+    current_score = calculate_score(current_layout)
+    
+    for iteration in range(max_iterations):
+        # Make a copy of the current layout
+        new_layout = [row.copy() for row in current_layout]
+        
+        # Randomly select a cell and change its color
+        row_to_change = random.randint(0, rows-1)
+        col_to_change = random.randint(0, cols-1)
+        new_layout[row_to_change][col_to_change] = random.choice(colors)
+        
+        # Calculate the score for the new layout
+        new_score = calculate_score(new_layout)
+        
+        # If the new layout has a higher score, accept the change
+        if new_score > current_score:
+            current_layout = new_layout
+            current_score = new_score
+    
+    return current_layout, current_score
+
+# Generate an initial layout
+initial_layout = generate_random_layout()
+
+# Optimize the layout
+optimized_layout, optimized_score = optimize_layout(initial_layout)
+
+print("\nOptimized Layout:")
+for row in optimized_layout:
+    print(row)
+print("\nOptimized Score:", optimized_score)
