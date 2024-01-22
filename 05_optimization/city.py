@@ -9,7 +9,6 @@ from bk7084.math import Mat4, Vec3
 import bk7084 as bk
 import types
 
-
 class BuildingType(Enum):
     """Enum for the type of building"""
 
@@ -370,7 +369,7 @@ class City:
             (row - half_height) * self._plot_width * 1.5,
         )
 
-    def update(self, dt=None, t=None):
+    def update(self, dt, t):
         """Updates all buildings in the city.
         This method will update the transform of each building in the city grid.
         """
