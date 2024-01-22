@@ -1,4 +1,5 @@
 from random import randint
+import numpy as np
 
 
 class Optimizer:
@@ -18,18 +19,19 @@ class Optimizer:
         for i in range (self._city._plots_per_col):
             for w in range (self._city._plots_per_row):
                 type.append(self._city.get_building_type(w, i))     # returns type as 2 letter value, e.q. HS or SK
-        
-        # plot_score = 
+                # print('type ', i*self._city._plots_per_row+w, ':', type[i*self._city._plots_per_row+w])
+
+        # calculate avg sunlight score
+        avg_sun_score = np.mean(self._city.compute_sunlight_scores())
+        # print('avg_sun_score', avg_sun_score)
+
         # determine score per plot
-        # for i in range (len(type)):
-        #     if type[i] == "HS":
-        #         determine score[i] folling set of rules for house
-        #     if type[i] == "SK":
-        #         determine score[i] folling set of rules for house
-                #
-                #
-                #
-                #
+        plot_score = np.zeros(len(type))
+        for i in range (len(type)):
+            if type[i] == 'HS':
+                
+                
+                
 
         #######
         # TODO: Implement your optimization algorithm here.
@@ -47,7 +49,7 @@ class Optimizer:
             self._city.print_plots()
         return sum(new_scores)
 
-    def optimize(self, n_steps=100, print_info=False):
+    def optimize(self, n_steps=1, print_info=False):
         """
         Runs the optimizer for a fixed number of steps.
         Args:

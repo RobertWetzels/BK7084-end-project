@@ -87,7 +87,7 @@ class Highrise:
         max_width = max_width/2
         for i in range(self.num_floors):
             floor1 = app.add_mesh(HighriseFloor(max_width, max_width, material_basic_floor), parent=self.building)
-            floor1.set_transform(Mat4.from_translation(Vec3(0, max_width*i, 0)) * Mat4.from_rotation_y(90 * i, True))
+            floor1.set_transform(Mat4.from_translation(Vec3(0, max_width*i, 0)) * Mat4.from_rotation_y(90 * (i-1), True))
             floor1.set_visible(True)
             floor2 = app.add_mesh(HighriseFloor(max_width, max_width, Foto_dak), parent=floor1)
             floor2.set_transform(Mat4.from_translation(Vec3(0, max_width, 0)))

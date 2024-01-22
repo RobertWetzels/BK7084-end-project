@@ -370,7 +370,7 @@ class City:
             (row - half_height) * self._plot_width * 1.5,
         )
 
-    def update(self, dt, t):
+    def update(self, dt=None, t=None):
         """Updates all buildings in the city.
         This method will update the transform of each building in the city grid.
         """
@@ -395,3 +395,4 @@ class City:
                     )
                     * pre_transform
                 )
+
