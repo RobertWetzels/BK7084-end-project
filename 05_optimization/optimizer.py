@@ -1,5 +1,4 @@
 from random import randint
-from city import City
 
 
 class Optimizer:
@@ -20,6 +19,7 @@ class Optimizer:
             for w in range (self._city._plots_per_row):
                 type.append(self._city.get_building_type(w, i))     # returns type as 2 letter value, e.q. HS or SK
         
+        # plot_score = 
         # determine score per plot
         # for i in range (len(type)):
         #     if type[i] == "HS":

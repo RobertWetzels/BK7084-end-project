@@ -156,17 +156,7 @@ class Highrise:
 
 
 class Office:
-    """An office class that procedurally generates
-    an office building given a number of floors and width.
 
-    Args:
-        app (bk.App):
-            The app instance.
-        num_floors (int):
-            Number of floors to generate.
-        max_width (float):
-            The maximum width for each component.
-    """
     def __init__(self, app, num_floors, max_width):
         self.num_floors = num_floors
         # Spawn the building and save the reference to the building
@@ -183,10 +173,9 @@ class Office:
             floor2 = app.add_mesh(OfficeFloor(max_width, max_width, material_gold), parent=floor1)
             floor2.set_transform(Mat4.from_translation(Vec3(0, max_width/3, 0)))
             floor2.set_visible(True)
-            if i != self.num_floors - 1:
-                floor2 = app.add_mesh(OfficeFloor(max_width, max_width, material_gold), parent=floor1)
-                floor2.set_transform(Mat4.from_translation(Vec3(0, max_width/3, 0)) * Mat4.from_rotation_x(180, True))
-                floor2.set_visible(True)
+            floor2 = app.add_mesh(OfficeFloor(max_width, max_width, material_gold), parent=floor1)
+            floor2.set_transform(Mat4.from_translation(Vec3(0, 0, 0)) * Mat4.from_rotation_z(180, True))
+            floor2.set_visible(True)
 
             if i == 0:
                 wall1 = app.add_mesh(DoorWall(max_width/3, max_width/3), parent=floor1)

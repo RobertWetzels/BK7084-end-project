@@ -163,10 +163,9 @@ class Office:
             floor2 = app.add_mesh(OfficeFloor(max_width, max_width, material_gold), parent=floor1)
             floor2.set_transform(Mat4.from_translation(Vec3(0, max_width/3, 0)))
             floor2.set_visible(True)
-            if i != self.num_floors - 1:
-                floor2 = app.add_mesh(OfficeFloor(max_width, max_width, material_gold), parent=floor1)
-                floor2.set_transform(Mat4.from_translation(Vec3(0, max_width/3, 0)) * Mat4.from_rotation_x(180, True))
-                floor2.set_visible(True)
+            floor2 = app.add_mesh(OfficeFloor(max_width, max_width, material_gold), parent=floor1)
+            floor2.set_transform(Mat4.from_translation(Vec3(0, 0, 0)) * Mat4.from_rotation_z(180, True))
+            floor2.set_visible(True)
 
             if i == 0:
                 wall1 = app.add_mesh(DoorWall(max_width/3, max_width/3), parent=floor1)
