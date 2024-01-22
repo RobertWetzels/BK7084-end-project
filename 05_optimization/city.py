@@ -200,7 +200,7 @@ class City:
                         building_type = BuildingType.PARK
                     else:
                         building_type = BuildingType.EMPTY
-                else:       # for not-high grid
+                else:       # plots where skyscrapers and highrises are not allowed
                     if 0 < give_type_int <= 25/87 :
                         building_type = BuildingType.OFFICE
                     elif 25/87 < give_type_int <= 62/87:       # + 0.37/87 *100
