@@ -30,7 +30,7 @@ class Optimizer:
         plot_score = np.zeros(len(type))
 
         # substracting avg sunlight to scores
-        plot_score += (11-avg_sun_score)/11*20
+        plot_score += (11-avg_sun_score)/10*20
 
         for i in range(len(type)):
             if type[i] is BuildingType.HOUSE:
@@ -40,49 +40,26 @@ class Optimizer:
                         if type[check_plot] is BuildingType.PARK:
                             plot_score[i] += 15
                         elif type[check_plot] is BuildingType.OFFICE:
-                            plot_score[i] += 5
+                            plot_score[i] += 10
                         elif type[check_plot] is BuildingType.SKYSCRAPER or type[check_plot] is BuildingType.HIGHRISE:
-                            plot_score[i] -= 10
+                            plot_score[i] -= 15
             elif type[i] is BuildingType.OFFICE:
                 for w in range(9):
                     check_plot = (i-1) + self._city._plots_per_row * (w // 3 - 1) + w % 3
                     if 0 <= check_plot < self._city._plots_per_row * self._city._plots_per_col:
                         if type[check_plot] is BuildingType.PARK:
-                            plot_score[i] += 15
+                            plot_score[i] += 10
                         elif type[check_plot] is BuildingType.HOUSE:
-                            plot_score[i] += 5
+                            plot_score[i] += 10
                         elif type[check_plot] is BuildingType.SKYSCRAPER or type[check_plot] is BuildingType.HIGHRISE:
                             plot_score[i] -= 10
             elif type[i] is BuildingType.SKYSCRAPER or type[i] is BuildingType.HIGHRISE or type[i] is BuildingType.EMPTY:
                 plot_score[i] = 0
             elif type[i] is BuildingType.PARK:
                 plot_score[i] = 2 * plot_score[i]
-
-            print(f"Plot {i}: {plot_score[i]}")
+            print('type ', i, ':', type[i], ', score: ', plot_score[i])
         
-        # for i in range(len(type)):
-        #     if plot_score[i] < 5 and plot_score[i] != 0:                   
-                    
-
-        #######
-        # buildingtype = []
-        # for row in range(self._city._plots_per_col):
-        #     for col in range(self._city._plots_per_row):
-        #         buildingtype.append(self._city.get_building_type(col, row))   # gives 'HS' for exmple
-        
-        # score = np.zeros(len(buildingtype))
-        # for row in range(self._city._plots_per_col):
-        #     for col in range(self._city._plots_per_row):
-        #         current_plot = row*self._city._plots_per_row + col
-        #         print("\n\n\n\nType:")
-        #         print(type(buildingtype[current_plot]))
-        #         print(buildingtype[current_plot])
-        #         print(BuildingType.HOUSE is buildingtype[current_plot])
-        #         if buildingtype[current_plot] is BuildingType.HOUSE: 
-        #             print("Hoi")
-        #             score[current_plot] += 10
-        #         print(buildingtype[current_plot], score[current_plot])
-
+        # switch alles met score < 0 met andere scores < 0 of scores gelijk aan 0 (type empty)
 
         # TODO: Implement your optimization algorithm here.
         # #  Hint: You can use the following code to swap two buildings:
@@ -91,7 +68,7 @@ class Optimizer:
         # self._city.swap_buildings(row1, col1, row2, col2)
         #  Hint: You can use the function `compute_sunlight_scores` of the City class
         #  to compute the sunlight scores
-        new_scores = self._city.compute_sunlight_scores()
+        new_scores = plot_score
         if print_info:
             print("New scores: ", new_scores)
             print("New scores sum: ", sum(new_scores))
