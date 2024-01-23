@@ -194,7 +194,7 @@ def on_update(input, dt, t):
         light.set_directional_light(Vec3(0.0) - pos)
 
     if run_optimizer:
-        optimizer.step()
+        optimizer.optimize()
 
 
 app.run(win)
