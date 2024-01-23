@@ -7,7 +7,6 @@ from components import material_basic_ground
 from random import randint
 from bk7084.math import Mat4, Vec3
 import bk7084 as bk
-import types
 
 class BuildingType(Enum):
     """Enum for the type of building"""

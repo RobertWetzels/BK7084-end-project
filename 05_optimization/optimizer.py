@@ -14,8 +14,7 @@ class Optimizer:
             print_info (bool):
                 Whether to print information about the optimization step.
         """
-        #######
-                # makes a list of all the plot types
+        # makes a list of all the plot types
         type = []
         for i in range (self._city._plots_per_col):
             for w in range (self._city._plots_per_row):
@@ -66,17 +65,20 @@ class Optimizer:
                     check_plot = (i-1) + self._city._plots_per_row * (w // 3 - 1) + w % 3
                     if 0 <= check_plot < self._city._plots_per_row * self._city._plots_per_col and np.abs((i%self._city._plots_per_row)-(check_plot%self._city._plots_per_row)) <= 1:
                         if type[check_plot] is BuildingType.SKYSCRAPER or type[check_plot] is BuildingType.HIGHRISE:
-                            plot_score[i] -= 10
+                            plot_score[i] -= 20
+                        elif type[check_plot] is BuildingType.HOUSE:
+                            plot_score[i] += 10
+                        elif type[check_plot] is BuildingType.OFFICE:
+                            plot_score[i] += 10
             # print('type ', i, ':', type[i], ', score: ', plot_score[i]
-
-                
+    
         initial_scores = plot_score
         # print("Initial scores: ", initial_scores)
         print("Initial scores sum: ", sum(initial_scores))
         # print("Initial city layout: ")
         # self._city.print_plots()
 
-        # switch alles met score < 0 met andere scores < 0 of scores gelijk aan 0 (type empty)
+        # switch alles met score < treshold met empty plots of scores gelijk aan(type empty)
         for i in range(len(plot_score)):
             if plot_score[i] < treshhold and plot_score[i] != 0:
                 plot1 = i
@@ -138,16 +140,13 @@ class Optimizer:
                     check_plot = (i-1) + self._city._plots_per_row * (w // 3 - 1) + w % 3
                     if 0 <= check_plot < self._city._plots_per_row * self._city._plots_per_col and np.abs((i%self._city._plots_per_row)-(check_plot%self._city._plots_per_row)) <= 1:
                         if type[check_plot] is BuildingType.SKYSCRAPER or type[check_plot] is BuildingType.HIGHRISE:
-                            plot_score[i] -= 10
+                            plot_score[i] -= 20
+                        elif type[check_plot] is BuildingType.HOUSE:
+                            plot_score[i] += 10
+                        elif type[check_plot] is BuildingType.OFFICE:
+                            plot_score[i] += 10
             # print('type ', i, ':', type[i], ', score: ', plot_score[i])
                 
-        # TODO: Implement your optimization algorithm here.
-        # #  Hint: You can use the following code to swap two buildings:
-        # row1, col1 = randint(0, self._city._plots_per_row - 1), randint(0, self._city._plots_per_col - 1)
-        # row2, col2 = randint(0, self._city._plots_per_row - 1), randint(0, self._city._plots_per_col - 1)
-        # self._city.swap_buildings(row1, col1, row2, col2)
-        #  Hint: You can use the function `compute_sunlight_scores` of the City class
-        #  to compute the sunlight scores
         new_scores = plot_score
         if print_info:
             # print("New scores: ", new_scores)
@@ -157,34 +156,27 @@ class Optimizer:
             self._city.get_buliding_numbers()
         return sum(new_scores)
 
-    def optimize(self, n_steps=100, print_info=False):
+    def optimize(self, n_steps=100):
         """
         Runs the optimizer for a fixed number of steps.
         Args:
             n_steps (int):
                 The number of optimization steps.
-            print_info (bool):
-                Whether to print information about the optimization step.
         """
-        # TODO: Change this method to add a stopping criterion, e.g. stop when
-        #  the score does not improve anymore.
-        # # self._city.reset_grid()
-        # print("Initial scores: ", self._city.compute_sunlight_scores())
-        # print("Initial scores sum: ", sum(self._city.compute_sunlight_scores()))
-        # print("Initial city layout: ")
-        # self._city.print_plots()
-        # print("Optimizing...")
+        print("Optimizing...")
 
         best_score = float('-inf')
         no_improvement_count = 0
-        improvement_treshold = 100
-        minimum_score_of_plot = 15
-        patience = 2
+        improvement_treshold = 10
+        minimum_score_of_plot = 30
+        patience = 5
 
         for i in range(n_steps):
             print(f"Step: {i}", end="\r")
-            score = self.step(minimum_score_of_plot, print_info)
+            score = self.step(minimum_score_of_plot)
             # TODO: Add a stopping criterion here.
+            if best_score < -100000:
+                first_score = score
             if score > best_score + improvement_treshold:
                 best_score = score
                 no_improvement_count = 0
@@ -193,6 +185,7 @@ class Optimizer:
             if no_improvement_count >=patience:
                 print(f"\nStopping optimization. No improvement for the last {patience} steps.")
                 break
+            
             print('count: ', no_improvement_count)
 
-        print(f"\nDone! Final score: {score}")
+        print(f"\nDone! \nFinal score: {score} \nScore before optimizing: {first_score}")
