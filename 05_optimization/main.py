@@ -173,7 +173,7 @@ def on_update(input, dt, t):
 
     if input.is_key_pressed(bk.KeyCode.O):
         if not is_key_o_pressed:
-            is_key_o_pressed = True
+            is_key_o_pressed = False
             run_optimizer = not run_optimizer
     if input.is_key_released(bk.KeyCode.O):
         is_key_o_pressed = False
