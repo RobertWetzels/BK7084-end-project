@@ -177,6 +177,7 @@ def on_update(input, dt, t):
             run_optimizer = not run_optimizer
     if input.is_key_released(bk.KeyCode.O):
         is_key_o_pressed = False
+        run_optimizer = False
 
     city.update(dt, t)
 

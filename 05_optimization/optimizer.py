@@ -157,7 +157,7 @@ class Optimizer:
             self._city.get_buliding_numbers()
         return sum(new_scores)
 
-    def optimize(self, n_steps=20, print_info=False):
+    def optimize(self, n_steps=100, print_info=False):
         """
         Runs the optimizer for a fixed number of steps.
         Args:
