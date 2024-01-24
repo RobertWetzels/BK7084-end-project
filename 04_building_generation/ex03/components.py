@@ -39,10 +39,10 @@ material_door.textures = {
 
 mat_office_delfts = bk.Material()
 mat_office_delfts.textures = {
-   "diffuse_texture": bk.res_path("../../05_optimization/assets/Tiles101_2K-PNG/Tiles101_2K-PNG_Color.png"),
-    #"normal_texture": bk.res_path("../05_optimization/assets\Tiles101_2K-PNG\Tiles101_2K-PNG_NormalGL.png"),  
-    #"specular_texture": bk.res_path("../05_optimization/assets\Tiles101_2K-PNG\Tiles101_2K-PNG_Displacement.png"), 
-    #"shininess_texture": bk.res_path("../05_optimization/assets\Tiles101_2K-PNG\Tiles101_2K-PNG_AmbientOcclusion.png")
+    "diffuse_texture": bk.res_path("../../05_optimization/assets/Tiles101_2K-PNG/Tiles101_2K-PNG_Color.png"),
+    "normal_texture": bk.res_path("../../05_optimization/assets\Tiles101_2K-PNG\Tiles101_2K-PNG_NormalGL.png"),  
+    "specular_texture": bk.res_path("../../05_optimization/assets\Tiles101_2K-PNG\Tiles101_2K-PNG_Displacement.png"), 
+    "shininess_texture": bk.res_path("../../05_optimization/assets\Tiles101_2K-PNG\Tiles101_2K-PNG_AmbientOcclusion.png")
 }
 material_mosaic_tiles = bk.Material()
 material_mosaic_tiles.textures = {
