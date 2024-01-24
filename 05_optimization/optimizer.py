@@ -85,7 +85,7 @@ class Optimizer:
                 w = 1
                 while w < len(plot_score):
                     plot2 = (i+w)%(self._city.plots_per_col*self._city.plots_per_row)
-                    if type[plot2] == BuildingType.EMPTY:
+                    if type[plot2] == BuildingType.EMPTY or (plot_score[plot2] != 0 and plot_score[plot2] < plot_score[plot1]):
                         break
                     w +=1
                 
@@ -95,7 +95,7 @@ class Optimizer:
                 self._city.swap_buildings(row1, col1, row2, col2)
                 type[plot2] = type[plot1]
                 type[plot1] = BuildingType.EMPTY
-                plot_score[plot1] = 0
+                plot_score[plot2] = 0       # this plot shouldn't be optimized anymore before new score is determined
 
         # calculate avg sunlight score
         avg_sun_score = np.mean(self._city.compute_sunlight_scores())
@@ -156,7 +156,7 @@ class Optimizer:
             self._city.get_buliding_numbers()
         return sum(new_scores)
 
-    def optimize(self, n_steps=100):
+    def optimize(self, n_steps=1000):
         """
         Runs the optimizer for a fixed number of steps.
         Args:
