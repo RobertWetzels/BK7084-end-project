@@ -37,14 +37,6 @@ material_door.textures = {
     "diffuse_texture": bk.res_path("../04_building_generation/assets/door.jpg"),
 }
 
-material_mosaic_tiles = bk.Material()
-material_mosaic_tiles.textures = {
-    "diffuse_texture": bk.res_path("../03_textures/assets/mosaic_tiles_col.png"),
-    "normal_texture": bk.res_path("../03_textures/assets/mosaic_tiles_nrm.png"),  
-    "specular_texture": bk.res_path("../03_textures/assets/mosaic_tiles_refl.png"), 
-    "shininess_texture": bk.res_path("../03_textures/assets/mosaic_tiles_gloss.png")
-}
-
 mat_office_delfts = bk.Material()
 mat_office_delfts.textures = {
     "diffuse_texture": bk.res_path("../05_optimization/assets/Tiles101_2K-PNG/Tiles101_2K-PNG_Color.png"),
@@ -53,13 +45,6 @@ mat_office_delfts.textures = {
     "shininess_texture": bk.res_path("../05_optimization/assets\Tiles101_2K-PNG\Tiles101_2K-PNG_AmbientOcclusion.png")
 }
 
-material_mosaic_tiles = bk.Material()
-material_mosaic_tiles.textures = {
-    "diffuse_texture": bk.res_path("../03_textures/assets/mosaic_tiles_col.png"),
-    "normal_texture": bk.res_path("../03_textures/assets/mosaic_tiles_nrm.png"),  
-    "specular_texture": bk.res_path("../03_textures/assets/mosaic_tiles_refl.png"), 
-    "shininess_texture": bk.res_path("../03_textures/assets/mosaic_tiles_gloss.png")
-}
 material_windowwalls = bk.Material()
 material_windowwalls.textures = {
     "diffuse_texture": bk.res_path("../structures/Facade009_2K-PNG_Color.png"),
