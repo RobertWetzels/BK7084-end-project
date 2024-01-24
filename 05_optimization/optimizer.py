@@ -78,7 +78,7 @@ class Optimizer:
         # print("Initial city layout: ")
         # self._city.print_plots()
 
-        # switch alles met score < treshold met empty plots of scores gelijk aan(type empty)
+        # switch all with score < treshold with empty plots or scores similar to (type empty)
         for i in range(len(plot_score)):
             if plot_score[i] < treshhold and plot_score[i] != 0:
                 plot1 = i
@@ -165,6 +165,7 @@ class Optimizer:
         """
         print("Optimizing...")
 
+        # define some values
         best_score = float('-inf')
         no_improvement_count = 0
         improvement_treshold = 10

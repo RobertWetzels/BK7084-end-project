@@ -7,10 +7,10 @@ Materials are used to define the appearance of a mesh.
 """
 material_stone_bricks = bk.Material()
 material_stone_bricks.textures = {
-    "diffuse_texture": bk.res_path("../03_textures/assets/stone_bricks_col.jpg"),
-    "normal_texture": bk.res_path("../03_textures/assets/stone_bricks_nrm.png"),
-    "specular_texture": bk.res_path("../03_textures/assets/stone_bricks_refl.jpg"),
-    "shininess_texture": bk.res_path("../03_textures/assets/stone_bricks_gloss.jpg"),
+    "diffuse_texture": bk.res_path("../../03_textures/assets/stone_bricks_col.jpg"),
+    "normal_texture": bk.res_path("../../03_textures/assets/stone_bricks_nrm.png"),
+    "specular_texture": bk.res_path("../../03_textures/assets/stone_bricks_refl.jpg"),
+    "shininess_texture": bk.res_path("../../03_textures/assets/stone_bricks_gloss.jpg"),
 }
 
 material_basic_bricks = bk.Material()
@@ -37,55 +37,46 @@ material_door.textures = {
     "diffuse_texture": bk.res_path("../assets/door.jpg"),
 }
 
-material_mosaic_tiles = bk.Material()
-material_mosaic_tiles.textures = {
-    "diffuse_texture": bk.res_path("../03_textures/assets/mosaic_tiles_col.png"),
-    "normal_texture": bk.res_path("../03_textures/assets/mosaic_tiles_nrm.png"),  
-    "specular_texture": bk.res_path("../03_textures/assets/mosaic_tiles_refl.png"), 
-    "shininess_texture": bk.res_path("../03_textures/assets/mosaic_tiles_gloss.png")
-}
-
 mat_office_delfts = bk.Material()
 mat_office_delfts.textures = {
-   "diffuse_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/05_optimization/assets/Tiles101_2K-PNG/Tiles101_2K-PNG_Color.png"),
+   "diffuse_texture": bk.res_path("../../05_optimization/assets/Tiles101_2K-PNG/Tiles101_2K-PNG_Color.png"),
     #"normal_texture": bk.res_path("../05_optimization/assets\Tiles101_2K-PNG\Tiles101_2K-PNG_NormalGL.png"),  
     #"specular_texture": bk.res_path("../05_optimization/assets\Tiles101_2K-PNG\Tiles101_2K-PNG_Displacement.png"), 
     #"shininess_texture": bk.res_path("../05_optimization/assets\Tiles101_2K-PNG\Tiles101_2K-PNG_AmbientOcclusion.png")
 }
 material_mosaic_tiles = bk.Material()
 material_mosaic_tiles.textures = {
-    "diffuse_texture": bk.res_path("../03_textures/assets/mosaic_tiles_col.png"),
-    "normal_texture": bk.res_path("../03_textures/assets/mosaic_tiles_nrm.png"),  
-    "specular_texture": bk.res_path("../03_textures/assets/mosaic_tiles_refl.png"), 
-    "shininess_texture": bk.res_path("../03_textures/assets/mosaic_tiles_gloss.png")
+    "diffuse_texture": bk.res_path("../../03_textures/assets/mosaic_tiles_col.png"),
+    "normal_texture": bk.res_path("../../03_textures/assets/mosaic_tiles_nrm.png"),  
+    "specular_texture": bk.res_path("../../03_textures/assets/mosaic_tiles_refl.png"), 
+    "shininess_texture": bk.res_path("../../03_textures/assets/mosaic_tiles_gloss.png")
 }
 material_windowwalls = bk.Material()
 material_windowwalls.textures = {
-    "diffuse_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/structures/Facade009_2K-PNG_Color.png"),
-    #"normal_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/structures/Facade009_2K-PNG_NormalDX.png"),  
-    "specular_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/structures/Facade009_2K-PNG_Roughness.png"), 
-    "shininess_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/structures/Facade009_2K-PNG_Metalness.png")
+    "diffuse_texture": bk.res_path("../../structures/Facade009_2K-PNG_Color.png"), 
+    "specular_texture": bk.res_path("../../structures/Facade009_2K-PNG_Roughness.png"), 
+    "shininess_texture": bk.res_path("../../structures/Facade009_2K-PNG_Metalness.png")
 }
 
 material_gold = bk.Material()
 material_gold.textures = {
     "diffuse_texture": bk.res_path("../../03_textures/assets/Foil002_2K-PNG/Foil002_2K-PNG_Color.png"),
-    "normal_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/03_textures/assets/Foil002_2K-PNG/Foil002_2K-PNG_NormalDX.png"),  
-    "specular_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/03_textures/assets/Foil002_2K-PNG/Foil002_2K-PNG_Roughness.png"), 
-    "shininess_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/03_textures/assets/Foil002_2K-PNG/Foil002_2K-PNG_Displacement.png")
+    "normal_texture": bk.res_path("../../03_textures/assets/Foil002_2K-PNG/Foil002_2K-PNG_NormalDX.png"),  
+    "specular_texture": bk.res_path("../../03_textures/assets/Foil002_2K-PNG/Foil002_2K-PNG_Roughness.png"), 
+    "shininess_texture": bk.res_path("../../03_textures/assets/Foil002_2K-PNG/Foil002_2K-PNG_Displacement.png")
 }
 
 Foto_dak = bk.Material()
 Foto_dak.textures = {
-    "diffuse_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/03_textures/assets/fotodak2.jpg")
+    "diffuse_texture": bk.res_path("../../03_textures/assets/fotodak2.jpg")
 }
 
 lego = bk.Material()
 lego.textures = {
-    "diffuse_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/03_textures/assets/TactilePaving002_2K-PNG/TactilePaving002_2K-PNG_Color.png"),
-    "normal_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/03_textures/assets/TactilePaving002_2K-PNG/TactilePaving002_2K-PNG_NormalDX.png"),  
-    "specular_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/03_textures/assets/TactilePaving002_2K-PNG/TactilePaving002_2K-PNG_Roughness.png"), 
-    "shininess_texture": bk.res_path("C:/Users/rbjwe/BK7084-end-project/03_textures/assets/TactilePaving002_2K-PNG/TactilePaving002_2K-PNG_Displacement.png")
+    "diffuse_texture": bk.res_path("../../03_textures/assets/TactilePaving002_2K-PNG/TactilePaving002_2K-PNG_Color.png"),
+    "normal_texture": bk.res_path("../../03_textures/assets/TactilePaving002_2K-PNG/TactilePaving002_2K-PNG_NormalDX.png"),  
+    "specular_texture": bk.res_path("../../03_textures/assets/TactilePaving002_2K-PNG/TactilePaving002_2K-PNG_Roughness.png"), 
+    "shininess_texture": bk.res_path("../../03_textures/assets/TactilePaving002_2K-PNG/TactilePaving002_2K-PNG_Displacement.png")
 }
 
 class BasicWall(bk.Mesh):               # basic wall
