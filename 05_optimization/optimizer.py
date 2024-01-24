@@ -168,8 +168,8 @@ class Optimizer:
         best_score = float('-inf')
         no_improvement_count = 0
         improvement_treshold = 10
-        minimum_score_of_plot = 30
-        patience = 5
+        minimum_score_of_plot = 35
+        patience = 10
 
         for i in range(n_steps):
             print(f"Step: {i}", end="\r")
